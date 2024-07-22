@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm Abyan Dimas R Mussyafa</h1>
 
-- 🌱 I’m currently learning **Vuejs**
+- 🌱 I’m currently learning **Next JS**
 
 - 💬 Ask me about **Anyting (Except My Code)**
 
