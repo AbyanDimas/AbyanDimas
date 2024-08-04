@@ -1,54 +1,50 @@
-<h1 align="center">Hi 👋, Saya Abyan Dimas R Mussyafa</h1>
-<h3 align="center">Calon Pengembang | Pembelajar Seumur Hidup</h3>
+<h1 align="center">Hi 👋, I'm Abyan Dimas R Mussyafa</h1>
+<h3 align="center">Aspiring Developer | Continuous Learner</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next%20JS-Belajar%20Saat%20Ini-informational" alt="Next JS">
-  <img src="https://img.shields.io/badge/Tanya%20saya-Apa%20Saja%20(Kecuali%20Kode%20Saya)-brightgreen" alt="Tanya saya">
-  <img src="https://img.shields.io/badge/Kontak-abyan.dimas@icloud.com-blue" alt="Kontak">
-  <img src="https://img.shields.io/badge/Fakta%20Menyenangkan-Saya%20Benci%20Kode%20Saya-orange" alt="Fakta Menyenangkan">
+  <img src="https://img.shields.io/badge/Next%20JS-Learning-informational" alt="Next JS">
+  <img src="https://img.shields.io/badge/Ask%20me-Anything%20(Except%20My%20Code)-brightgreen" alt="Ask me">
+  <img src="https://img.shields.io/badge/Contact-abyan.dimas@icloud.com-blue" alt="Contact">
+  <img src="https://img.shields.io/badge/Fun%20fact-I%20Hate%20My%20Code-orange" alt="Fun Fact">
 </p>
 
 ---
 
-### 📈 Statistik Saya
+### 📈 My Statistics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=abyandimas&show_icons=true&locale=id&layout=compact" alt="Bahasa Teratas" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=abyandimas&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
 </p>
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=abyandimas&show_icons=true&locale=id" alt="Statistik GitHub" />
+  <img src="https://github-readme-stats.vercel.app/api?username=abyandimas&show_icons=true&locale=en" alt="GitHub Stats" />
 </p>
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=abyandimas&label=Profile%20views&color=0e75b6&style=flat" alt="Tampilan Profil" />
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=abyandimas&repo=My-Project" alt="Pinned Repo" />
+</p>
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=abyandimas&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
+</p>
+
+
+---
+
+### 📊 GitHub Streak
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=abyandimas&theme=dark" alt="GitHub Streak" />
 </p>
 
 ---
 
-### 📊 Streak GitHub
+### 🏆 GitHub Trophies
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=abyandimas&theme=dark" alt="Streak GitHub" />
+  <img src="https://github-profile-trophy.vercel.app/?username=abyandimas&theme=onedark" alt="GitHub Trophies" />
 </p>
 
 ---
 
-### 🏆 Trofi GitHub
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=abyandimas&theme=onedark" alt="Trofi GitHub" />
-</p>
-
----
-
-### 🎨 Grafik Aktivitas Terbaru
-
-<p align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=abyandimas&theme=react-dark" alt="Grafik Aktivitas Terbaru" />
-</p>
-
----
-
-### 🌐 Hubungi Saya
+### 🌐 Connect with Me
 
 <p align="center">
   <a href="https://linkedin.com/in/abyan dimas r mussyafa" target="blank">
