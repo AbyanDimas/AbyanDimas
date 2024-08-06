@@ -1,71 +1,47 @@
-<h1 align="center">Hi 👋, I'm Abyan Dimas R Mussyafa</h1>
-<h3 align="center">Aspiring Developer | Continuous Learner</h3>
+# Hi there 👋, I'm Abyan Dimas!
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Next%20JS-Learning-informational" alt="Next JS">
-  <img src="https://img.shields.io/badge/Ask%20me-Anything%20(Except%20My%20Code)-brightgreen" alt="Ask me">
-  <img src="https://img.shields.io/badge/Contact-abyan.dimas@icloud.com-blue" alt="Contact">
-  <img src="https://img.shields.io/badge/Fun%20fact-I%20Hate%20My%20Code-orange" alt="Fun Fact">
-</p>
+## About Me
+I am a dedicated and passionate developer with a strong focus on web development. My goal is to continuously learn and apply new technologies to create innovative and efficient solutions. Outside of coding, I enjoy reading, hiking, and photography.
 
----
+- 🔭 **Current Projects**: Working on various web development projects
+- 🌱 **Learning**: Next.js, Strapi, Tailwind CSS
+- 👯 **Collaboration**: Open to collaborating on open-source projects
+- 💬 **Ask Me About**: Web development, JavaScript, modern front-end frameworks
+- 📫 **Contact**: [abyan.dimas@icloud.com](mailto:abyan.dimas@icloud.com)
+- ⚡ **Fun Fact**: An avid hiker and photography enthusiast
 
-### 📈 My Statistics
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=abyandimas&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
-</p>
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=abyandimas&show_icons=true&locale=en" alt="GitHub Stats" />
-</p>
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=abyandimas&repo=My-Project" alt="Pinned Repo" />
-</p>
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=abyandimas&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
-</p>
+## Skills
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 
----
+### Frameworks & Libraries
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### 📊 GitHub Streak
+### Tools
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Strapi](https://img.shields.io/badge/Strapi-2E7EEA?style=for-the-badge&logo=strapi&logoColor=white)
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=abyandimas&theme=dark" alt="GitHub Streak" />
-</p>
+## GitHub Stats
+![Abyan's GitHub stats](https://github-readme-stats.vercel.app/api?username=AbyanDimas&show_icons=true&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=AbyanDimas&layout=compact&theme=radical)
 
----
+## Notable Projects
+Here are some of my notable projects:
 
-### 🏆 GitHub Trophies
+- [**Next.js Geeky Blog**](https://github.com/AbyanDimas/nextjs-geeky-blog) - A blog template built with Next.js and styled with Tailwind CSS.
+- [**Strapi CMS Integration**](https://github.com/AbyanDimas/strapi-cms-integration) - Integration of Strapi as a headless CMS for a Next.js project.
+- [**Tailwind CSS Components**](https://github.com/AbyanDimas/tailwind-css-components) - A collection of reusable components built with Tailwind CSS.
+- [**JavaScript Algorithms**](https://github.com/AbyanDimas/javascript-algorithms) - Implementation of various algorithms in JavaScript.
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=abyandimas&theme=onedark" alt="GitHub Trophies" />
-</p>
+## Connect with Me
+- [LinkedIn](https://www.linkedin.com/in/abyandimas)
+- [Twitter](https://twitter.com/AbyanDimas)
 
----
-
-### 🌐 Connect with Me
-
-<p align="center">
-  <a href="https://linkedin.com/in/abyan dimas r mussyafa" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="40" />
-  </a>
-  <a href="https://fb.com/abyan dimas" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="Facebook" height="30" width="40" />
-  </a>
-  <a href="https://instagram.com/meetbyan" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram" height="30" width="40" />
-  </a>
-  <a href="https://discord.gg/abyan dimas" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Discord" height="30" width="40" />
-  </a>
-  <a href="https://twitter.com/abyandimas" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="30" width="40" />
-  </a>
-  <a href="https://t.me/abyandimas" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/telegram.svg" alt="Telegram" height="30" width="40" />
-  </a>
-  <a href="https://github.com/abyandimas" target="blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="GitHub" height="30" width="40" />
-  </a>
-</p>
+Thank you for visiting my profile! Have a wonderful day! 😊
