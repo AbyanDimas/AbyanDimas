@@ -1,5 +1,7 @@
 # Hi there 👋, I'm Abyan Dimas!
 
+![Profile views](https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet)
+
 ## About Me
 I am a dedicated and passionate developer with a strong focus on web development. My goal is to continuously learn and apply new technologies to create innovative and efficient solutions. Outside of coding, I enjoy reading, hiking, and photography.
 
@@ -16,7 +18,7 @@ I am a dedicated and passionate developer with a strong focus on web development
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
 
 ### Frameworks & Libraries
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -41,7 +43,7 @@ Here are some of my notable projects:
 - [**JavaScript Algorithms**](https://github.com/AbyanDimas/javascript-algorithms) - Implementation of various algorithms in JavaScript.
 
 ## Connect with Me
-- [LinkedIn](https://www.linkedin.com/in/abyandimas)
-- [Twitter](https://twitter.com/AbyanDimas)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abyandimas)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/AbyanDimas)
 
-Thank you for visiting my profile! Have a wonderful day! 😊
+![Thank you for visiting my profile! Have a wonderful day! 😊](https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif)
