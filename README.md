@@ -1,6 +1,13 @@
 # Hi there 👋, I'm Abyan Dimas!
 
 ![Profile views](https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet)
+![GitHub Stars](https://img.shields.io/github/stars/AbyanDimas?style=flat-square&color=yellow)
+![GitHub Followers](https://img.shields.io/github/followers/AbyanDimas?style=flat-square&color=brightgreen)
+![Repo Size](https://img.shields.io/github/repo-size/AbyanDimas/note-app?style=flat-square&color=orange)
+![Last Commit](https://img.shields.io/github/last-commit/AbyanDimas/note-app?style=flat-square&color=red)
+![Languages](https://img.shields.io/github/languages/top/AbyanDimas/note-app?style=flat-square&color=blue)
+
+
 
 ## About Me
 I am a dedicated and passionate developer with a strong focus on web development. My goal is to continuously learn and apply new technologies to create innovative and efficient solutions. Outside of coding, I enjoy reading, hiking, and photography.
@@ -31,19 +38,6 @@ I am a dedicated and passionate developer with a strong focus on web development
 ![Strapi](https://img.shields.io/badge/Strapi-2E7EEA?style=for-the-badge&logo=strapi&logoColor=white)
 
 ## GitHub Stats
-![Abyan's GitHub stats](https://github-readme-stats.vercel.app/api?username=AbyanDimas&show_icons=true&theme=radical)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=AbyanDimas&layout=compact&theme=radical)
 
-## Notable Projects
-Here are some of my notable projects:
 
-- [**Next.js Geeky Blog**](https://github.com/AbyanDimas/nextjs-geeky-blog) - A blog template built with Next.js and styled with Tailwind CSS.
-- [**Strapi CMS Integration**](https://github.com/AbyanDimas/strapi-cms-integration) - Integration of Strapi as a headless CMS for a Next.js project.
-- [**Tailwind CSS Components**](https://github.com/AbyanDimas/tailwind-css-components) - A collection of reusable components built with Tailwind CSS.
-- [**JavaScript Algorithms**](https://github.com/AbyanDimas/javascript-algorithms) - Implementation of various algorithms in JavaScript.
-
-## Connect with Me
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abyandimas)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/AbyanDimas)
-
-![Thank you for visiting my profile! Have a wonderful day! 😊](https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif)
