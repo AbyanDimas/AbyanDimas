@@ -10,14 +10,15 @@
 
 
 ## About Me
-I am a dedicated and passionate developer with a strong focus on web development. My goal is to continuously learn and apply new technologies to create innovative and efficient solutions. Outside of coding, I enjoy reading, hiking, and photography.
+I am a dedicated and passionate developer with a strong focus on web development, particularly with React, TypeScript, and Tailwind CSS. My goal is to continually learn and apply new technologies to build responsive and innovative user interfaces. Outside of coding, I enjoy exploring new ideas, working on creative projects, and improving my skills in UI/UX design. I’m also involved in organizing events like MPLS and love collaborating with others to create meaningful experiences.
 
 - 🔭 **Current Projects**: Working on various web development projects
-- 🌱 **Learning**: Next.js, Strapi, Tailwind CSS
-- 👯 **Collaboration**: Open to collaborating on open-source projects
+- 🌱 **Learning**: Next.js, Strapi, Tailwind CSS, UI/UX design
+- 👯 **Collaboration**: Open to collaborating on open-source projects 
 - 💬 **Ask Me About**: Web development, JavaScript, modern front-end frameworks
 - 📫 **Contact**: [abyan.dimas@icloud.com](mailto:abyan.dimas@icloud.com)
-- ⚡ **Fun Fact**: An avid hiker and photography enthusiast
+- ⚡ Fun Fact: Always exploring new technologies and techniques to improve my web development skills.
+- 🏫 Current School Project: Helping develop the school website. GitHub account: web@smkn1adw.sch.id, Website: 202.65.116.10:3000
 
 ## Skills
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -25,7 +26,6 @@ I am a dedicated and passionate developer with a strong focus on web development
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
 
 ### Frameworks & Libraries
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
