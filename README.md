@@ -3,9 +3,9 @@
 ![Profile views](https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet)
 ![GitHub Stars](https://img.shields.io/github/stars/AbyanDimas?style=flat-square&color=yellow)
 ![GitHub Followers](https://img.shields.io/github/followers/AbyanDimas?style=flat-square&color=brightgreen)
-![Repo Size](https://img.shields.io/github/repo-size/AbyanDimas/note-app?style=flat-square&color=orange)
-![Last Commit](https://img.shields.io/github/last-commit/AbyanDimas/note-app?style=flat-square&color=red)
-![Languages](https://img.shields.io/github/languages/top/AbyanDimas/note-app?style=flat-square&color=blue)
+![Repo Size](https://img.shields.io/github/repo-size/web-adb/Web-admin-ADBCreative?style=flat-square&color=orange)
+![Last Commit](https://img.shields.io/github/last-commit/web-adb/Web-admin-ADBCreative?style=flat-square&color=red)
+![Languages](https://img.shields.io/github/languages/top/web-adb/Web-admin-ADBCreative?style=flat-square&color=blue)
 
 
 
