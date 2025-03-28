@@ -2,7 +2,6 @@
 
 ![Profile views](https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet)
 ![GitHub Stars](https://img.shields.io/github/stars/AbyanDimas?style=flat-square&color=yellow)
-![GitHub Followers](https://img.shields.io/github/followers/AbyanDimas?style=flat-square&color=brightgreen)
 ![Repo Size](https://img.shields.io/github/repo-size/web-adb/Web-admin-ADBCreative?style=flat-square&color=orange)
 ![Last Commit](https://img.shields.io/github/last-commit/web-adb/Web-admin-ADBCreative?style=flat-square&color=red)
 ![Languages](https://img.shields.io/github/languages/top/web-adb/Web-admin-ADBCreative?style=flat-square&color=blue)
@@ -10,7 +9,7 @@
 
 
 ## About Me
-I am a dedicated and passionate developer with a strong focus on web development, particularly with React, TypeScript, and Tailwind CSS. My goal is to continually learn and apply new technologies to build responsive and innovative user interfaces. Outside of coding, I enjoy exploring new ideas, working on creative projects, and improving my skills in UI/UX design. I’m also involved in organizing events like MPLS and love collaborating with others to create meaningful experiences.
+Hi, I'm Abyan! I love making cool websites that look great and are easy to use. I use React, TypeScript and Tailwind CSS to create a clean and modern look. I also like to add fun animations and interactive effects to bring the website to life. As well as coding, I'm also interested in UI\/UX design and collaboration.
 
 - 🔭 **Current Projects**: Working on various web development projects
 - 🌱 **Learning**: Next.js, Strapi, Tailwind CSS, UI/UX design
@@ -18,7 +17,7 @@ I am a dedicated and passionate developer with a strong focus on web development
 - 💬 **Ask Me About**: Web development, JavaScript, modern front-end frameworks
 - 📫 **Contact**: [abyan.dimas@icloud.com](mailto:abyan.dimas@icloud.com)
 - ⚡ Fun Fact: Always exploring new technologies and techniques to improve my web development skills.
-- 🏫 Current School Project: Helping develop the school website. GitHub account: web@smkn1adw.sch.id, Website: 202.65.116.10:3000
+- 🏫 Current School Project: Helping develop the school website and creating LMS (Learning Management System) **Using Next JS 15**.
 
 ## Skills
 
