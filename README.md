@@ -1,9 +1,5 @@
 <div align="center">
   <!-- Main Heading with Emoji -->
-  <h1 style="font-size: 2.5rem; margin-bottom: 10px;">
-    Hi there 👋, I'm Abyan Dimas!
-  </h1>
-
   <!-- Banner with rounded corners -->
   <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=1600&h=300&fit=crop" style="border-radius: 20px; margin: 10px 0 20px 0;" alt="Banner"/>
   
