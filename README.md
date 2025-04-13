@@ -1,11 +1,25 @@
-# Hi there 👋, I'm Abyan Dimas!
+<div align="center">
+  <!-- Main Heading with Emoji -->
+  <h1 style="font-size: 2.5rem; margin-bottom: 10px;">
+    Hi there 👋, I'm Abyan Dimas!
+  </h1>
 
-![Profile views](https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet)
-![GitHub Stars](https://img.shields.io/github/stars/AbyanDimas?style=flat-square&color=yellow)
-![Last Commit](https://img.shields.io/github/last-commit/web-adb/Web-admin-ADBCreative?style=flat-square&color=red)
-![Languages](https://img.shields.io/github/languages/top/web-adb/Web-admin-ADBCreative?style=flat-square&color=blue)
+  <!-- Banner with rounded corners -->
+  <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=1600&h=300&fit=crop" style="border-radius: 20px; margin: 10px 0 20px 0;" alt="Banner"/>
+  
+  <!-- Animated Typing Text -->
+  <p align="center">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=7A3CE8&center=true&vCenter=true&width=435&lines=Frontend+Developer;UI%2FUX+Enthusiast;React+%7C+Next.js+%7C+TypeScript;Always+Learning+New+Tech" alt="Typing SVG" />
+  </p>
 
-
+  <!-- Badges Row -->
+  <div style="margin-top: 15px;">
+    <img src="https://komarev.com/ghpvc/?username=AbyanDimas&color=blueviolet&style=flat-square" alt="Profile views"/>
+    <img src="https://img.shields.io/github/stars/AbyanDimas?style=flat-square&color=yellow" alt="GitHub Stars"/>
+    <img src="https://img.shields.io/github/last-commit/web-adb/Web-admin-ADBCreative?style=flat-square&color=red" alt="Last Commit"/>
+    <img src="https://img.shields.io/github/languages/top/web-adb/Web-admin-ADBCreative?style=flat-square&color=blue" alt="Top Languages"/>
+  </div>
+</div>
 
 ## About Me
 Hi, I'm Abyan! I love making cool websites that look great and are easy to use. I use React, TypeScript and Tailwind CSS to create a clean and modern look. I also like to add fun animations and interactive effects to bring the website to life. As well as coding, I'm also interested in UI\/UX design and collaboration.
