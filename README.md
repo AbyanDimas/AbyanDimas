@@ -1,7 +1,7 @@
 <div align="center">
   <!-- Main Heading with Emoji -->
   <!-- Banner with rounded corners -->
-  <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=1600&h=300&fit=crop" style="border-radius: 20px; margin: 10px 0 20px 0;" alt="Banner"/>
+  <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&h=400&fit=crop" style="border-radius: 20px; margin: 10px 0 20px 0;" alt="UI/UX Banner"/>
   
   <!-- Animated Typing Text -->
   <p align="center">
