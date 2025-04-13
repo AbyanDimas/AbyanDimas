@@ -17,16 +17,38 @@
   </div>
 </div>
 
-## About Me
-Hi, I'm Abyan! I love making cool websites that look great and are easy to use. I use React, TypeScript and Tailwind CSS to create a clean and modern look. I also like to add fun animations and interactive effects to bring the website to life. As well as coding, I'm also interested in UI\/UX design and collaboration.
+## 📌 About Me
+
+<div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border-left: 5px solid #7A3CE8; margin-bottom: 20px;">
+  
+  <p style="font-size: 1.05rem; line-height: 1.6; color: #333;">
+    Hi, I'm Abyan! I love making cool websites that look great and are easy to use. I use React, TypeScript and Tailwind CSS to create a clean and modern look. I also like to add fun animations and interactive effects to bring the website to life. As well as coding, I'm also interested in UI/UX design and collaboration.
+  </p>
+
+</div>
+
+### 🚀 Current Focus
+
+<div style="background: #f5f7ff; border-radius: 10px; padding: 15px; margin-bottom: 20px; border: 1px solid #e1e4e8;">
 
 - 🔭 **Current Projects**: Working on various web development projects
 - 🌱 **Learning**: Next.js, Strapi, Tailwind CSS, UI/UX design
-- 👯 **Collaboration**: Open to collaborating on open-source projects 
+- 👯 **Collaboration**: Open to collaborating on open-source projects
+- 🏫 **School Project**: Developing school website and LMS using Next.js 15
+
+</div>
+
+### 💡 More About Me
+
+<div style="background: #fff8f5; border-radius: 10px; padding: 15px; border: 1px dashed #ffaa71;">
+
 - 💬 **Ask Me About**: Web development, JavaScript, modern front-end frameworks
-- 📫 **Contact**: [abyan.dimas@icloud.com](mailto:abyan.dimas@icloud.com)
-- ⚡ Fun Fact: Always exploring new technologies and techniques to improve my web development skills.
-- 🏫 Current School Project: Helping develop the school website and creating LMS (Learning Management System) **Using Next JS 15**.
+- 📫 **Contact**: [abyan.dimas@icloud.com](mailto:abyan.dimas@icloud.com)  
+- ⚡ **Fun Fact**: Always exploring new technologies to improve my skills
+- 🎨 **Design Tools**: Figma, Adobe XD (beginner)
+
+</div>
+
 
 ## Skills
 
