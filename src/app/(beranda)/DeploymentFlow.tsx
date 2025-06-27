@@ -44,7 +44,7 @@ const deploymentSteps = [
 
 export default function DeploymentFlow() {
   return (
-    <section className="py-12 bg-sky-950/70 backdrop-blur-sm">
+    <section id="workflow" className="py-12 bg-sky-950/70 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.h2 
           className="text-3xl font-bold mb-12 text-cyan-400 text-center"

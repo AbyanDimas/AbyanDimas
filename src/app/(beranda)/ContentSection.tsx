@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 
 export default function ContentSection() {
   return (
-    <section className="py-12 bg-gradient-to-b from-sky-900/30 to-blue-900/30">
+    <section id="about" className="py-12 bg-gradient-to-b from-sky-900/30 to-blue-900/30">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
