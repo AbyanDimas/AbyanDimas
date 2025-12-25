@@ -1,26 +1,66 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
+@theme {
+  --font-sans: var(--font-jakarta);
+}
+
+/* Default (System/Light) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F3F6F8;
+  --foreground: #1A1A1A;
+
+  --card-bg: #FFFFFF;
+  --card-border: #E5E7EB;
+  /* gray-200 */
+  --card-hover: #F9FAFB;
+
+  --text-primary: #111827;
+  /* gray-900 */
+  --text-secondary: #6B7280;
+  /* gray-500 */
+  --text-muted: #9CA3AF;
+  /* gray-400 */
+
+  --input-bg: #FFFFFF;
+  --input-border: #F3F4F6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark Mode */
+[data-theme='dark'] {
+  --background: #0d1117;
+  --foreground: #c9d1d9;
+
+  --card-bg: #161b22;
+  --card-border: #30363d;
+  --card-hover: #21262d;
+
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+
+  --input-bg: #21262d;
+  --input-border: #30363d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tokyo Night Mode */
+[data-theme='tokyonight'] {
+  --background: #1a1b26;
+  --foreground: #a9b1d6;
+
+  --card-bg: #1f2335;
+  --card-border: #292e42;
+  --card-hover: #24283b;
+
+  --text-primary: #c0caf5;
+  --text-secondary: #a9b1d6;
+  --text-muted: #565f89;
+
+  --input-bg: #1f2335;
+  --input-border: #292e42;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

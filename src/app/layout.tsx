@@ -1,81 +1,46 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
+import { Providers } from "./providers";
 
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
-  title: "Abyan | Cloud Engineer Portfolio",
-  description:
-    "Professional portfolio of Abyan, showcasing cloud computing expertise and projects.",
-  keywords: [
-    "Cloud Engineer",
-    "Portfolio",
-    "AWS",
-    "Azure",
-    "GCP",
-    "Cloud Computing",
-    "DevOps",
-    "Server Solutions",
-  ],
-  authors: [{ name: "Abyan" }],
+  metadataBase: new URL('https://abyan-portfolio.vercel.app'), // Replace with actual domain
+  title: {
+    default: "Abyan Dimas | Cloud Engineer & Web Developer",
+    template: "%s | Abyan Dimas"
+  },
+  description: "Portfolio of Abyan Dimas, a Cloud Engineer and Web Developer specializing in AWS, Next.js, and DevOps.",
   openGraph: {
-    title: "Abyan Dimas R Mussyafa",
-    description:
-      "Professional portfolio showcasing cloud computing expertise and projects.",
-    url: "https://yourportfolio.com",
-    siteName: "Abyan Portfolio",
+    title: "Abyan Dimas | Cloud Engineer & Web Developer",
+    description: "Explore the portfolio of Abyan Dimas. Cloud Engineering, Web Development, and featured projects.",
+    url: 'https://abyan-portfolio.vercel.app',
+    siteName: 'Abyan Dimas Portfolio',
+    locale: 'en_US',
+    type: 'website',
     images: [
       {
-        url: "https://yourportfolio.com/og-image.jpg",
+        url: '/banner.png', // Uses the banner we updated earlier
         width: 1200,
         height: 630,
-        alt: "Abyan Portfolio Preview",
+        alt: 'Abyan Dimas Portfolio Banner',
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Abyan | Cloud Engineer Portfolio",
-    description:
-      "Professional portfolio showcasing cloud computing expertise and projects.",
-    creator: "@yourtwitter",
-    images: ["https://yourportfolio.com/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    card: 'summary_large_image',
+    title: "Abyan Dimas | Cloud Engineer & Web Developer",
+    description: "Cloud Engineer & Web Developer. Check out my projects and services.",
+    images: ['/banner.png'],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: '/avatar.png',
   },
-  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -85,34 +50,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Abyan",
-              jobTitle: "Cloud Engineer",
-              url: "https://yourportfolio.com",
-              sameAs: [
-                "https://github.com/yourusername",
-                "https://linkedin.com/in/yourusername",
-                "https://twitter.com/yourusername",
-              ],
-              description:
-                "Professional cloud engineer with expertise in AWS, Azure, and GCP solutions.",
-            }),
-          }}
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
-        <Analytics />
-        <SpeedInsights/>
+      <body className={`${jakarta.variable} font-sans antialiased transition-colors duration-300`}>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
