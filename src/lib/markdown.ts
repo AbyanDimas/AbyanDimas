@@ -136,3 +136,51 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
         ...(data as any),
     } as BlogPostData;
 }
+
+export interface CommandNoteData {
+    slug: string;
+    title: string;
+    description: string;
+    date: string;
+    tags?: string[];
+    category?: string;
+    contentHtml: string;
+}
+
+const commandsDirectory = path.join(process.cwd(), "content/commands");
+
+export async function getCommandNotes(): Promise<CommandNoteData[]> {
+    if (!fs.existsSync(commandsDirectory)) return [];
+    const fileNames = fs.readdirSync(commandsDirectory);
+    const allNotes = await Promise.all(fileNames.map(async (fileName) => {
+        const slug = fileName.replace(/\.md$/, "");
+        const fullPath = path.join(commandsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const { data, content } = matter(fileContents);
+        const processedContent = await remark().use(html).process(content);
+        const contentHtml = processedContent.toString();
+
+        return {
+            slug,
+            contentHtml,
+            ...(data as any),
+        } as CommandNoteData;
+    }));
+
+    // Sort by date desc
+    return allNotes.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export async function getCommandNote(slug: string): Promise<CommandNoteData> {
+    const fullPath = path.join(commandsDirectory, `${slug}.md`);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+    const processedContent = await remark().use(html).process(content);
+    const contentHtml = processedContent.toString();
+
+    return {
+        slug,
+        contentHtml,
+        ...(data as any),
+    } as CommandNoteData;
+}

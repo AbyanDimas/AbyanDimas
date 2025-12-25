@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { Search, Bookmark, Users, Bell, Plus } from "lucide-react";
+import { Search, Bookmark, Users, Bell, Plus, SquareTerminal } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -152,7 +152,9 @@ export default function Header() {
                 <div className="flex items-center gap-4">
                     <div className="hidden sm:flex items-center gap-2">
                         <button className="p-2 hover:bg-[var(--card-hover)] rounded-full transition-colors text-[var(--text-secondary)]">
-                            <Bookmark className="w-5 h-5" />
+                            <Link href={"/terminal-command-notes"} className="hover:text-[var(--text-primary)] transition-colors">
+                                <SquareTerminal className="w-5 h-5" />
+                            </Link>
                         </button>
                         <button className="p-2 hover:bg-[var(--card-hover)] rounded-full transition-colors text-[var(--text-secondary)]">
                             <Link href="/contact" className="hover:text-[var(--text-primary)] transition-colors">
