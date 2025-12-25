@@ -176,13 +176,6 @@ export default function Header() {
                         {/* Mobile Avatar Menu */}
                         {isAvatarMenuOpen && (
                             <div className="absolute top-full right-0 mt-2 w-72 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl shadow-xl z-50 p-4 flex flex-col gap-4 lg:hidden">
-                                {/* Styled Name */}
-                                <div>
-                                    <p className="text-xs text-[var(--text-secondary)] font-medium mb-1">Signed in as</p>
-                                    <h3 className="font-extrabold text-xl bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Jenny Wilson</h3>
-                                </div>
-
-                                <hr className="border-[var(--card-border)]" />
 
                                 {/* Mobile Search */}
                                 <form onSubmit={handleSearch} className="flex items-center gap-2 bg-[var(--input-bg)] px-3 py-2 rounded-lg border border-[var(--input-border)] focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
