@@ -80,6 +80,7 @@ export interface BlogPostData {
     excerpt: string;
     date: string;
     author: string;
+    coverImage?: string;
     contentHtml: string;
 }
 
