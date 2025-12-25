@@ -44,7 +44,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         .sort(() => 0.5 - Math.random())
         .slice(0, 2);
 
-    const shareUrl = `https://abyan-portfolio.vercel.app/blog/${slug}`;
+    const shareUrl = `https://abyandimasrmussyafa.vercel.app/blog/${slug}`;
     const shareText = `Check out this article: ${post.title}`;
 
     return (

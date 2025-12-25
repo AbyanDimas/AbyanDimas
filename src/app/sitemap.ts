@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/markdown';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://abyan-portfolio.vercel.app'; // Replace with actual domain if known, or use a variable
+    const baseUrl = 'https://abyandimasrmussyafa.vercel.app'; // Replace with actual domain if known, or use a variable
     const posts = await getBlogPosts();
 
     const blogUrls = posts.map((post) => ({

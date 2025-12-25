@@ -10,16 +10,16 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://abyan-portfolio.vercel.app'), // Replace with actual domain
+  metadataBase: new URL('https://abyandimasrmussyafa.vercel.app'), // Replace with actual domain
   title: {
-    default: "Abyan Dimas | Cloud Engineer & Web Developer",
+    default: "Abyan Dimas | Personal Blog",
     template: "%s | Abyan Dimas"
   },
   description: "Portfolio of Abyan Dimas, a Cloud Engineer and Web Developer specializing in AWS, Next.js, and DevOps.",
   openGraph: {
-    title: "Abyan Dimas | Cloud Engineer & Web Developer",
+    title: "Abyan Dimas | Personal Blog",
     description: "Explore the portfolio of Abyan Dimas. Cloud Engineering, Web Development, and featured projects.",
-    url: 'https://abyan-portfolio.vercel.app',
+    url: 'https://abyandimasrmussyafa.vercel.app',
     siteName: 'Abyan Dimas Portfolio',
     locale: 'en_US',
     type: 'website',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Abyan Dimas | Cloud Engineer & Web Developer",
+    title: "Abyan Dimas | Personal Blog",
     description: "Cloud Engineer & Web Developer. Check out my projects and services.",
     images: ['/banner.png'],
   },
