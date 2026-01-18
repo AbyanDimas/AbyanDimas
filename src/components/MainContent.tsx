@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { Github, Briefcase, Code, Users, Cpu, MoreHorizontal } from "lucide-react";
+import { Github, Briefcase, Code, Users, Cpu, MoreHorizontal, MessageCircle, Pen, QrCode, Link2, Image as ImageIcon, FileText, Timer, Search } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { ProfileData, BlogPostData, ProjectData } from "@/lib/markdown";
 import ProjectCard from "./ProjectCard";
@@ -12,7 +12,7 @@ interface MainContentProps {
     projects: ProjectData[];
 }
 
-type Tab = "overview" | "projects" | "articles";
+type Tab = "overview" | "projects" | "articles" | "apps";
 
 const iconMap: Record<string, any> = {
     Briefcase,
@@ -40,7 +40,8 @@ export default function MainContent({ data, blogPosts, projects }: MainContentPr
                 {[
                     { id: "overview", label: "Overview" },
                     { id: "projects", label: "Projects" },
-                    { id: "articles", label: "Articles" }
+                    { id: "articles", label: "Articles" },
+                    { id: "apps", label: "Apps" }
                 ].map(tab => (
                     <button
                         key={tab.id}
@@ -104,7 +105,7 @@ export default function MainContent({ data, blogPosts, projects }: MainContentPr
                         {/* Skills Chart */}
                         <section>
                             <h2 className="text-xl font-bold text-[var(--text-primary)] mb-6">Skills Proficiency</h2>
-                            <div className="h-80 w-full bg-[var(--card-hover)] rounded-3xl p-6 flex items-center justify-center relative overflow-hidden">
+                            <div className="h-80 w-full bg-[var(--card-hover)] rounded-3xl p-6 relative overflow-hidden">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart
                                         data={radarData}
@@ -254,6 +255,113 @@ export default function MainContent({ data, blogPosts, projects }: MainContentPr
                         ) : (
                             <p className="text-gray-500 text-sm">No articles found.</p>
                         )}
+                    </section>
+                )}
+
+                {/* Apps Tab */}
+                {activeTab === "apps" && (
+                    <section>
+                        <div className="mb-6">
+                            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">My Applications</h2>
+                            <p className="text-sm text-[var(--text-secondary)]">Interactive tools and applications I've built</p>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                            {[
+                                {
+                                    name: 'Ask Me',
+                                    description: 'AI Chat Assistant',
+                                    href: '/ask-me',
+                                    icon: MessageCircle,
+                                    gradient: 'from-blue-500 to-cyan-500',
+                                    bgColor: 'bg-gradient-to-br from-blue-500 to-cyan-500'
+                                },
+                                {
+                                    name: 'Canvas',
+                                    description: 'Drawing Board',
+                                    href: '/canvas',
+                                    icon: Pen,
+                                    gradient: 'from-purple-500 to-pink-500',
+                                    bgColor: 'bg-gradient-to-br from-purple-500 to-pink-500'
+                                },
+                                {
+                                    name: 'QR Code',
+                                    description: 'Generator & Scanner',
+                                    href: '/qr-code',
+                                    icon: QrCode,
+                                    gradient: 'from-green-500 to-emerald-500',
+                                    bgColor: 'bg-gradient-to-br from-green-500 to-emerald-500'
+                                },
+                                {
+                                    name: 'URL Short',
+                                    description: 'Link Shortener',
+                                    href: '/url-shortener',
+                                    icon: Link2,
+                                    gradient: 'from-orange-500 to-red-500',
+                                    bgColor: 'bg-gradient-to-br from-orange-500 to-red-500'
+                                },
+                                {
+                                    name: 'OCR Reader',
+                                    description: 'Text from Images',
+                                    href: '/ocr-reader',
+                                    icon: Code,
+                                    gradient: 'from-indigo-500 to-pink-500',
+                                    bgColor: 'bg-gradient-to-br from-indigo-500 to-pink-500'
+                                },
+                                {
+                                    name: 'Compressor',
+                                    description: 'Reduce Image Size',
+                                    href: '/image-compressor',
+                                    icon: ImageIcon,
+                                    gradient: 'from-teal-500 to-cyan-500',
+                                    bgColor: 'bg-gradient-to-br from-teal-500 to-cyan-500'
+                                },
+                                {
+                                    name: 'MD Editor',
+                                    description: 'Markdown Editor',
+                                    href: '/markdown-editor',
+                                    icon: FileText,
+                                    gradient: 'from-amber-500 to-orange-500',
+                                    bgColor: 'bg-gradient-to-br from-amber-500 to-orange-500'
+                                },
+                                {
+                                    name: 'Pomodoro',
+                                    description: 'Focus Timer',
+                                    href: '/pomodoro-timer',
+                                    icon: Timer,
+                                    gradient: 'from-rose-500 to-red-500',
+                                    bgColor: 'bg-gradient-to-br from-rose-500 to-red-500'
+                                },
+                                {
+                                    name: 'Scraper',
+                                    description: 'Web Scraping',
+                                    href: '/scraping',
+                                    icon: Search,
+                                    gradient: 'from-purple-500 to-blue-500',
+                                    bgColor: 'bg-gradient-to-br from-purple-500 to-blue-500'
+                                },
+                            ].map((app) => {
+                                const Icon = app.icon;
+                                return (
+                                    <a
+                                        key={app.name}
+                                        href={app.href}
+                                        className="group flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-[var(--card-hover)] transition-all duration-300 hover:scale-105"
+                                    >
+                                        <div className={`w-16 h-16 rounded-[1.25rem] ${app.bgColor} shadow-lg flex items-center justify-center group-hover:shadow-xl transition-shadow duration-300`}>
+                                            <Icon className="w-8 h-8 text-white" strokeWidth={2.5} />
+                                        </div>
+                                        <div className="text-center">
+                                            <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">
+                                                {app.name}
+                                            </h3>
+                                            <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+                                                {app.description}
+                                            </p>
+                                        </div>
+                                    </a>
+                                );
+                            })}
+                        </div>
                     </section>
                 )}
 

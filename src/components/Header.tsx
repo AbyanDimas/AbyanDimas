@@ -1,11 +1,10 @@
 'use client';
 
 import Link from "next/link";
-import { Search, Bookmark, Users, Bell, Plus, SquareTerminal } from "lucide-react";
+import { Search, Users, MessageCircle, SquareTerminal, ChevronDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
 
 export default function Header() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -160,6 +159,14 @@ export default function Header() {
                             <Link href="/contact" className="hover:text-[var(--text-primary)] transition-colors">
                                 <Users className="w-5 h-5" />
                             </Link>
+                        </button>
+                        <button className="relative p-2 hover:bg-[var(--card-hover)] rounded-full transition-colors text-[var(--text-secondary)]">
+                            <Link href="/ask-me" className="hover:text-[var(--text-primary)] transition-colors">
+                                <MessageCircle className="w-5 h-5" />
+                            </Link>
+                            <span className="absolute top-0 right-0 transform translate-x-1 -translate-y-1 bg-blue-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full border-2 border-[var(--card-bg)]">
+                                New
+                            </span>
                         </button>
                     </div>
 

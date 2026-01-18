@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://abyandimasrmussyafa.vercel.app'), // Replace with actual domain
+  metadataBase: new URL('https://abyandimas.me'), // Replace with actual domain
   title: {
     default: "Abyan Dimas | Personal Blog",
     template: "%s | Abyan Dimas"
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Abyan Dimas | Personal Blog",
     description: "Explore the portfolio of Abyan Dimas. Cloud Engineering, Web Development, and featured projects.",
-    url: 'https://abyandimasrmussyafa.vercel.app',
+    url: 'https://abyandimas.me',
     siteName: 'Abyan Dimas Portfolio',
     locale: 'en_US',
     type: 'website',
@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${jakarta.variable} font-sans antialiased transition-colors duration-300`}>
         <Providers>
           <Header />
