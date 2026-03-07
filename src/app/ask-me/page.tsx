@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Send, Paperclip, Mic, Globe, Code, Zap, Sparkles, Menu, Bot, User, X, Image as ImageIcon, Copy, Check, RotateCcw } from 'lucide-react';
+
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import AskMeSidebar from "@/components/ask-me/AskMeSidebar";
@@ -265,7 +265,7 @@ export default function AskMePage() {
             id: 'solution-architect',
             title: 'Solution Architect',
             description: 'Desain sistem & pola cloud tingkat tinggi',
-            icon: Globe,
+            icon: 'public',
             color: 'bg-blue-500',
             gradient: 'from-blue-500 to-cyan-400'
         },
@@ -273,7 +273,7 @@ export default function AskMePage() {
             id: 'web-architect',
             title: 'Web Architect',
             description: 'Frontend modern & teknologi web terkini',
-            icon: Code,
+            icon: 'code',
             color: 'bg-purple-500',
             gradient: 'from-purple-500 to-pink-400'
         },
@@ -281,7 +281,7 @@ export default function AskMePage() {
             id: 'productivity',
             title: 'Productivity Guru',
             description: 'Optimasi workflow & alat produktivitas',
-            icon: Zap,
+            icon: 'bolt',
             color: 'bg-amber-500',
             gradient: 'from-amber-500 to-orange-400'
         }
@@ -308,12 +308,12 @@ export default function AskMePage() {
                             onClick={() => setShowPermissionModal(false)}
                             className="absolute top-4 right-4 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
                         >
-                            <X className="w-5 h-5" />
+                            <span className="material-symbols-outlined text-[20px]">close</span>
                         </button>
 
                         <div className="flex flex-col items-center text-center gap-4">
                             <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
-                                <Mic className="w-6 h-6" />
+                                <span className="material-symbols-outlined text-[24px]">mic</span>
                             </div>
                             <div className="space-y-2">
                                 <h3 className="text-lg font-bold text-[var(--text-primary)]">Akses Mikrofon Ditolak</h3>
@@ -349,7 +349,7 @@ export default function AskMePage() {
                         onClick={() => setIsSidebarOpen(true)}
                         className="absolute top-4 left-4 md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--card-hover)] rounded-lg z-30"
                     >
-                        <Menu className="w-6 h-6" />
+                        <span className="material-symbols-outlined text-[24px]">menu</span>
                     </button>
                 )}
 
@@ -402,7 +402,7 @@ export default function AskMePage() {
                                                 "w-8 h-8 rounded-lg mb-3 flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110",
                                                 `bg-gradient-to-br ${mode.gradient}`
                                             )}>
-                                                <Icon className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">{Icon as string}</span>
                                             </div>
                                             <h3 className="font-semibold text-[var(--text-primary)] mb-0.5 text-sm">{mode.title}</h3>
                                             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{mode.description}</p>
@@ -425,7 +425,7 @@ export default function AskMePage() {
                                         "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
                                         msg.role === 'user' ? "bg-blue-600 text-white" : "bg-green-600 text-white"
                                     )}>
-                                        {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                                        {msg.role === 'user' ? <span className="material-symbols-outlined text-[16px]">person</span> : <span className="material-symbols-outlined text-[16px]">robot_2</span>}
                                     </div>
                                     <div className="max-w-full">
                                         <div className={cn(
@@ -486,14 +486,14 @@ export default function AskMePage() {
                                                 className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded transition-colors"
                                                 title="Salin Pesan"
                                             >
-                                                {copiedIndex === idx ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                                                {copiedIndex === idx ? <span className="material-symbols-outlined text-[12px]">check</span> : <span className="material-symbols-outlined text-[12px]">content_copy</span>}
                                             </button>
                                             <button
                                                 onClick={() => handleRetry(idx)}
                                                 className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded transition-colors"
                                                 title="Ulangi Chat"
                                             >
-                                                <RotateCcw className="w-3 h-3" />
+                                                <span className="material-symbols-outlined text-[12px]">replay</span>
                                             </button>
                                         </div>
                                     </div>
@@ -502,7 +502,7 @@ export default function AskMePage() {
                             {isLoading && (
                                 <div className="flex gap-3 max-w-[90%] mr-auto">
                                     <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center shrink-0">
-                                        <Bot className="w-4 h-4" />
+                                        <span className="material-symbols-outlined text-[16px]">robot_2</span>
                                     </div>
                                     <div className="p-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1">
                                         <div className="w-1.5 h-1.5 bg-[var(--text-muted)] rounded-full animate-bounce [animation-delay:-0.3s]" />
@@ -545,7 +545,7 @@ export default function AskMePage() {
                                     onClick={() => setSelectedImage(null)}
                                     className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 shadow-md"
                                 >
-                                    <X className="w-3 h-3" />
+                                    <span className="material-symbols-outlined text-[12px]">close</span>
                                 </button>
                             </div>
                         )}
@@ -575,7 +575,7 @@ export default function AskMePage() {
                                         onClick={() => fileInputRef.current?.click()}
                                         className="p-1.5 hover:bg-[var(--card-hover)] rounded-full text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1.5 text-xs"
                                     >
-                                        <Paperclip className="w-3.5 h-3.5" />
+                                        <span className="material-symbols-outlined text-[14px]">attach_file</span>
                                         <span className="hidden sm:inline">Lampirkan</span>
                                     </button>
                                     <button
@@ -587,7 +587,7 @@ export default function AskMePage() {
                                                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--card-hover)]"
                                         )}
                                     >
-                                        <Mic className="w-3.5 h-3.5" />
+                                        <span className="material-symbols-outlined text-[14px]">mic</span>
                                         <span className="hidden sm:inline">{isListening ? 'Mendengarkan...' : 'Suara'}</span>
                                     </button>
                                     <button
@@ -599,7 +599,7 @@ export default function AskMePage() {
                                                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--card-hover)]"
                                         )}
                                     >
-                                        <Sparkles className="w-3.5 h-3.5" />
+                                        <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
                                         <span className="hidden sm:inline">Prompts</span>
                                     </button>
                                 </div>
@@ -623,7 +623,7 @@ export default function AskMePage() {
                                     disabled={isLoading || (!input.trim() && !selectedImage)}
                                     className="p-1.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition-all hover:scale-105 active:scale-95 shadow-md shadow-blue-500/20"
                                 >
-                                    <Send className="w-3.5 h-3.5" />
+                                    <span className="material-symbols-outlined text-[14px]">send</span>
                                 </button>
                             </div>
                         </div>

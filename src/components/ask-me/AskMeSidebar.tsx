@@ -1,17 +1,6 @@
 'use client';
 
-import {
-    MessageSquare,
-    Clock,
-    Bookmark,
-    Settings,
-    HelpCircle,
-    Plus,
-    X,
-    Trash2,
-    Share2,
-    Check
-} from 'lucide-react';
+
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useEffect, useState } from 'react';
@@ -102,7 +91,7 @@ export default function AskMeSidebar({ isOpen, setIsOpen, currentChatId, onSelec
                         }}
                         className="flex-1 flex items-center gap-2 bg-[var(--card-hover)] hover:bg-[var(--card-border)] text-[var(--text-primary)] px-4 py-2 rounded-lg transition-colors text-sm font-medium"
                     >
-                        <Plus className="w-4 h-4" />
+                        <span className="material-symbols-outlined text-[16px]">add</span>
                         <span>Chat Baru</span>
                     </button>
                     {/* Mobile Close Button */}
@@ -110,7 +99,7 @@ export default function AskMeSidebar({ isOpen, setIsOpen, currentChatId, onSelec
                         onClick={() => setIsOpen(false)}
                         className="md:hidden ml-2 p-2 hover:bg-[var(--card-hover)] rounded-lg text-[var(--text-secondary)]"
                     >
-                        <X className="w-5 h-5" />
+                        <span className="material-symbols-outlined text-[20px]">close</span>
                     </button>
                 </div>
 
@@ -150,14 +139,14 @@ export default function AskMeSidebar({ isOpen, setIsOpen, currentChatId, onSelec
                                             className="p-1 hover:bg-blue-500/10 hover:text-blue-500 rounded transition-all"
                                             title="Salin ke Public"
                                         >
-                                            {copiedId === chat.id ? <Check className="w-3 h-3" /> : <Share2 className="w-3 h-3" />}
+                                            {copiedId === chat.id ? <span className="material-symbols-outlined text-[12px]">check</span> : <span className="material-symbols-outlined text-[12px]">share</span>}
                                         </button>
                                         <button
                                             onClick={(e) => handleDeleteHistory(e, chat.id)}
                                             className="p-1 hover:bg-red-500/10 hover:text-red-500 rounded transition-all"
                                             title="Hapus"
                                         >
-                                            <Trash2 className="w-3 h-3" />
+                                            <span className="material-symbols-outlined text-[12px]">delete</span>
                                         </button>
                                     </div>
                                 </div>

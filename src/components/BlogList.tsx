@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, ChevronLeft, ChevronRight, FileText, Sparkles, Clock, User, ArrowRight } from 'lucide-react';
+
 import { BlogPostData } from '@/lib/markdown';
 
 interface BlogListProps {
@@ -70,7 +70,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                 <div className="w-full md:w-auto">
                     <div className="relative group min-w-[300px]">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <Search className="h-5 w-5 text-zinc-400 group-focus-within:text-blue-500 transition-colors" />
+                            <span className="material-symbols-outlined text-[20px] text-zinc-400 group-focus-within:text-blue-500 transition-colors">search</span>
                         </div>
                         <input
                             type="text"
@@ -103,7 +103,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                                     {/* Content Overlay */}
                                     <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full md:w-3/4">
                                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider mb-4 border border-blue-400/30">
-                                            <Sparkles className="w-3 h-3" /> Featured
+                                            <span className="material-symbols-outlined text-[12px]">auto_awesome</span> Featured
                                         </div>
                                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-blue-200 transition-colors">
                                             {currentPosts[0].title}
@@ -114,13 +114,13 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                                         <div className="flex items-center gap-6 text-zinc-300 text-sm font-medium">
                                             <div className="flex items-center gap-2">
                                                 <div className="p-1 bg-white/10 rounded-full">
-                                                    <User className="w-4 h-4" />
+                                                    <span className="material-symbols-outlined text-[16px]">person</span>
                                                 </div>
                                                 {currentPosts[0].author}
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <div className="p-1 bg-white/10 rounded-full">
-                                                    <Clock className="w-4 h-4" />
+                                                    <span className="material-symbols-outlined text-[16px]">schedule</span>
                                                 </div>
                                                 {currentPosts[0].date}
                                             </div>
@@ -148,7 +148,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                                         />
                                     ) : (
                                         <div className="flex items-center justify-center h-full text-zinc-300">
-                                            <FileText className="w-12 h-12" />
+                                            <span className="material-symbols-outlined text-[48px]">description</span>
                                         </div>
                                     )}
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
@@ -158,7 +158,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                                 <div className="flex flex-col flex-1 p-6">
                                     <div className="flex items-center gap-3 text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-3">
                                         <span className="flex items-center gap-1">
-                                            <Clock className="w-3 h-3" /> {post.date}
+                                            <span className="material-symbols-outlined text-[12px]">schedule</span> {post.date}
                                         </span>
                                     </div>
 
@@ -180,7 +180,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                                             </span>
                                         </div>
                                         <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center gap-1">
-                                            Read <ArrowRight className="w-4 h-4" />
+                                            Read <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                                         </span>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
             ) : (
                 <div className="flex flex-col items-center justify-center py-24 text-center">
                     <div className="w-24 h-24 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center mb-6">
-                        <Search className="w-10 h-10 text-zinc-400" />
+                        <span className="material-symbols-outlined text-[40px] text-zinc-400">search</span>
                     </div>
                     <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">No articles found</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto">
@@ -215,7 +215,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                         className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                         aria-label="Previous Page"
                     >
-                        <ChevronLeft className="w-5 h-5" />
+                        <span className="material-symbols-outlined text-[20px]">chevron_left</span>
                     </button>
 
                     <div className="hidden sm:flex items-center gap-2">
@@ -247,7 +247,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
                         className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                         aria-label="Next Page"
                     >
-                        <ChevronRight className="w-5 h-5" />
+                        <span className="material-symbols-outlined text-[20px]">chevron_right</span>
                     </button>
                 </div>
             )}

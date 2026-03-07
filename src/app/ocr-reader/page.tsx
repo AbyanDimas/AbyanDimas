@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Camera, Upload, Copy, Check, FileText, Image as ImageIcon, Trash2, Download } from 'lucide-react';
+
 import Tesseract from 'tesseract.js';
 
 interface ExtractedText {
@@ -114,7 +114,7 @@ export default function OCRReaderPage() {
                             <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                                        <Camera className="w-6 h-6 text-white" />
+                                        <span className="material-symbols-outlined text-[24px] text-white">photo_camera</span>
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -132,7 +132,7 @@ export default function OCRReaderPage() {
                                         className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-16 text-center cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group/upload"
                                     >
                                         <div className="w-20 h-20 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center group-hover/upload:bg-indigo-50 dark:group-hover/upload:bg-indigo-900/20 transition-colors">
-                                            <Upload className="w-10 h-10 text-gray-400 group-hover/upload:text-indigo-500 transition-colors" />
+                                            <span className="material-symbols-outlined text-[40px] text-gray-400 group-hover/upload:text-indigo-500 transition-colors">upload</span>
                                         </div>
                                         <p className="text-base font-medium text-gray-900 dark:text-white mb-1">
                                             Click to upload image
@@ -158,7 +158,7 @@ export default function OCRReaderPage() {
                                                 onClick={handleClear}
                                                 className="ml-4 px-4 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors flex items-center gap-2"
                                             >
-                                                <Trash2 className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">delete</span>
                                                 Clear
                                             </button>
                                         </div>
@@ -198,7 +198,7 @@ export default function OCRReaderPage() {
                         {history.length > 0 && (
                             <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-800/50 p-6 shadow-xl">
                                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                                    <FileText className="w-5 h-5 text-indigo-600" />
+                                    <span className="material-symbols-outlined text-[20px] text-indigo-600">description</span>
                                     Recent Scans
                                 </h3>
                                 <div className="space-y-2">
@@ -236,15 +236,15 @@ export default function OCRReaderPage() {
                             <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl">
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                        <FileText className="w-5 h-5 text-indigo-600" />
+                                        <span className="material-symbols-outlined text-[20px] text-indigo-600">description</span>
                                         Extracted Text
                                     </h3>
                                     {confidence > 0 && (
                                         <span className={`px-2 py-1 rounded-lg text-xs font-semibold ${confidence >= 80
-                                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
-                                                : confidence >= 60
-                                                    ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
-                                                    : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                                            ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                            : confidence >= 60
+                                                ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                                                : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
                                             }`}>
                                             {confidence}% confident
                                         </span>
@@ -266,12 +266,12 @@ export default function OCRReaderPage() {
                                             >
                                                 {copied ? (
                                                     <>
-                                                        <Check className="w-4 h-4" />
+                                                        <span className="material-symbols-outlined text-[16px]">check</span>
                                                         Copied!
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <Copy className="w-4 h-4" />
+                                                        <span className="material-symbols-outlined text-[16px]">content_copy</span>
                                                         Copy
                                                     </>
                                                 )}
@@ -280,14 +280,14 @@ export default function OCRReaderPage() {
                                                 onClick={handleDownload}
                                                 className="px-4 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-xl transition-colors flex items-center gap-2"
                                             >
-                                                <Download className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">download</span>
                                             </button>
                                         </div>
                                     </div>
                                 ) : (
                                     <div className="text-center py-24">
                                         <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-2xl flex items-center justify-center">
-                                            <ImageIcon className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+                                            <span className="material-symbols-outlined text-[32px] text-indigo-500 dark:text-indigo-400">image</span>
                                         </div>
                                         <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                                             No text extracted yet

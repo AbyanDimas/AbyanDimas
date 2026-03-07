@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { QrCode, ScanLine, Download, Upload, Copy, Check, Sliders } from 'lucide-react';
+
 import QRCode from 'qrcode';
 import jsQR from 'jsqr';
 import JsBarcode from 'jsbarcode';
@@ -130,7 +130,7 @@ export default function QRCodePage() {
                 {/* Header */}
                 <div className="mb-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium mb-4">
-                        <QrCode className="w-4 h-4" />
+                        <span className="material-symbols-outlined text-[16px]">qr_code</span>
                         QR Tools
                     </div>
                     <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
@@ -207,8 +207,8 @@ export default function QRCodePage() {
                                                 generateCode();
                                             }}
                                             className={`p-3 rounded-lg border-2 transition-all text-left ${barcodeFormat === format.value
-                                                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                                                    : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+                                                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                                                : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
                                                 }`}
                                         >
                                             <div className="font-medium text-sm text-gray-900 dark:text-white">
@@ -227,7 +227,7 @@ export default function QRCodePage() {
                                 onClick={() => setShowSettings(!showSettings)}
                                 className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
-                                <Sliders className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">tune</span>
                                 {showSettings ? 'Sembunyikan' : 'Tampilkan'} pengaturan lanjutan
                             </button>
 
@@ -337,14 +337,14 @@ export default function QRCodePage() {
                                             onClick={downloadQR}
                                             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
                                         >
-                                            <Download className="w-4 h-4" />
+                                            <span className="material-symbols-outlined text-[16px]">download</span>
                                             Download PNG
                                         </button>
                                     </div>
                                 ) : (
                                     <div className="flex flex-col items-center justify-center py-16 text-center">
                                         <div className="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mb-4">
-                                            <QrCode className="w-10 h-10 text-gray-400 dark:text-gray-600" />
+                                            <span className="material-symbols-outlined text-[40px] text-gray-400 dark:text-gray-600">qr_code</span>
                                         </div>
                                         <p className="text-sm text-gray-500 dark:text-gray-500">
                                             QR code akan muncul di sini
@@ -363,7 +363,7 @@ export default function QRCodePage() {
                                 className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-12 text-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group"
                             >
                                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors">
-                                    <Upload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                                    <span className="material-symbols-outlined text-[32px] text-gray-400 group-hover:text-blue-500 transition-colors">upload</span>
                                 </div>
                                 <p className="text-base font-medium text-gray-900 dark:text-white mb-1">
                                     Upload gambar QR code
@@ -386,7 +386,7 @@ export default function QRCodePage() {
                                     <div className="flex items-start justify-between mb-3">
                                         <div className="flex items-center gap-2">
                                             <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                                                <Check className="w-3 h-3 text-white" />
+                                                <span className="material-symbols-outlined text-[12px] text-white">check</span>
                                             </div>
                                             <h3 className="font-medium text-green-900 dark:text-green-300">
                                                 Berhasil Dibaca
@@ -398,12 +398,12 @@ export default function QRCodePage() {
                                         >
                                             {copied ? (
                                                 <>
-                                                    <Check className="w-4 h-4" />
+                                                    <span className="material-symbols-outlined text-[16px]">check</span>
                                                     Copied!
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Copy className="w-4 h-4" />
+                                                    <span className="material-symbols-outlined text-[16px]">content_copy</span>
                                                     Copy
                                                 </>
                                             )}

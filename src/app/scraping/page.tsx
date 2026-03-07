@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, Loader2, ExternalLink, Star, MessageCircle, Users, GitBranch, Globe, TrendingUp, Hash, Download, Copy, History, Youtube, Sparkles, Clock, MapPin } from 'lucide-react';
+
 import { scrapeWikipedia, scrapeGitHub, scrapeReddit, scrapeHackerNews, scrapeProductHunt, scrapeYouTube, scrapeGoogleMaps } from '../actions/scraper';
 
 type TabType = 'wikipedia' | 'github' | 'reddit' | 'hackernews' | 'producthunt' | 'youtube' | 'googlemaps';
@@ -108,13 +108,13 @@ export default function ScrapingPage() {
     };
 
     const tabs = [
-        { id: 'wikipedia', name: 'Wikipedia', icon: Globe, placeholder: 'Cari artikel Wikipedia...', example: 'Indonesia' },
-        { id: 'github', name: 'GitHub', icon: GitBranch, placeholder: 'Username GitHub...', example: 'torvalds' },
-        { id: 'reddit', name: 'Reddit', icon: Hash, placeholder: 'Nama subreddit...', example: 'programming' },
-        { id: 'youtube', name: 'YouTube', icon: Youtube, placeholder: 'Cari video...', example: 'web scraping tutorial' },
-        { id: 'googlemaps', name: 'Google Maps', icon: MapPin, placeholder: 'Cari tempat...', example: 'restaurant' },
-        { id: 'hackernews', name: 'Hacker News', icon: TrendingUp, placeholder: 'Top stories (auto)', example: '' },
-        { id: 'producthunt', name: 'Product Hunt', icon: Sparkles, placeholder: 'Today products (auto)', example: '' },
+        { id: 'wikipedia', name: 'Wikipedia', icon: "public", placeholder: 'Cari artikel Wikipedia...', example: 'Indonesia' },
+        { id: 'github', name: 'GitHub', icon: "fork_right", placeholder: 'Username GitHub...', example: 'torvalds' },
+        { id: 'reddit', name: 'Reddit', icon: "tag", placeholder: 'Nama subreddit...', example: 'programming' },
+        { id: 'youtube', name: 'YouTube', icon: "play_circle", placeholder: 'Cari video...', example: 'web scraping tutorial' },
+        { id: 'googlemaps', name: 'Google Maps', icon: "location_on", placeholder: 'Cari tempat...', example: 'restaurant' },
+        { id: 'hackernews', name: 'Hacker News', icon: "trending_up", placeholder: 'Top stories (auto)', example: '' },
+        { id: 'producthunt', name: 'Product Hunt', icon: "auto_awesome", placeholder: 'Today products (auto)', example: '' },
     ];
 
     const currentTab = tabs.find(t => t.id === activeTab);
@@ -151,7 +151,7 @@ export default function ScrapingPage() {
                                     : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800'
                                     }`}
                             >
-                                <Icon className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">{tab.icon}</span>
                                 {tab.name}
                             </button>
                         );
@@ -167,8 +167,8 @@ export default function ScrapingPage() {
                                 key={limit}
                                 onClick={() => setItemLimit(limit)}
                                 className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${itemLimit === limit
-                                        ? 'bg-purple-600 text-white shadow-lg'
-                                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                                    ? 'bg-purple-600 text-white shadow-lg'
+                                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                                     }`}
                             >
                                 {limit}
@@ -206,7 +206,7 @@ export default function ScrapingPage() {
                                                         }}
                                                         className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 text-sm"
                                                     >
-                                                        <Clock className="w-3 h-3 text-gray-400" />
+                                                        <span className="material-symbols-outlined text-[12px] text-gray-400">schedule</span>
                                                         <span className="text-gray-900 dark:text-white">{item.query}</span>
                                                     </button>
                                                 ))}
@@ -231,12 +231,12 @@ export default function ScrapingPage() {
                                 >
                                     {loading ? (
                                         <>
-                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            <span className="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
                                             Loading...
                                         </>
                                     ) : (
                                         <>
-                                            <Search className="w-5 h-5" />
+                                            <span className="material-symbols-outlined text-[20px]">search</span>
                                             {['hackernews', 'producthunt'].includes(activeTab) ? 'Load' : 'Cari'}
                                         </>
                                     )}
@@ -258,14 +258,14 @@ export default function ScrapingPage() {
                             onClick={copyToClipboard}
                             className="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-xl transition-colors flex items-center gap-2 text-sm font-medium"
                         >
-                            <Copy className="w-4 h-4" />
+                            <span className="material-symbols-outlined text-[16px]">content_copy</span>
                             {copied ? 'Copied!' : 'Copy JSON'}
                         </button>
                         <button
                             onClick={exportToJSON}
                             className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl transition-all flex items-center gap-2 text-sm font-medium"
                         >
-                            <Download className="w-4 h-4" />
+                            <span className="material-symbols-outlined text-[16px]">download</span>
                             Export JSON
                         </button>
                     </div>
@@ -301,7 +301,7 @@ export default function ScrapingPage() {
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline"
                                         >
-                                            Baca selengkapnya <ExternalLink className="w-4 h-4" />
+                                            Baca selengkapnya <span className="material-symbols-outlined text-[16px]">open_in_new</span>
                                         </a>
                                     </div>
                                 </div>
@@ -319,11 +319,11 @@ export default function ScrapingPage() {
                                             {result.bio && <p className="text-gray-700 dark:text-gray-300 mb-4">{result.bio}</p>}
                                             <div className="flex gap-6 text-sm">
                                                 <div className="flex items-center gap-2">
-                                                    <Users className="w-4 h-4 text-gray-500" />
+                                                    <span className="material-symbols-outlined text-[16px] text-gray-500">group</span>
                                                     <span className="text-gray-700 dark:text-gray-300">{result.followers} followers</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <GitBranch className="w-4 h-4 text-gray-500" />
+                                                    <span className="material-symbols-outlined text-[16px] text-gray-500">fork_right</span>
                                                     <span className="text-gray-700 dark:text-gray-300">{result.publicRepos} repos</span>
                                                 </div>
                                             </div>
@@ -351,7 +351,7 @@ export default function ScrapingPage() {
                                                         <span className="text-gray-600 dark:text-gray-400">{repo.language}</span>
                                                     )}
                                                     <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                                                        <Star className="w-4 h-4" />
+                                                        <span className="material-symbols-outlined text-[16px]">star</span>
                                                         {repo.stars}
                                                     </div>
                                                 </div>
@@ -382,11 +382,11 @@ export default function ScrapingPage() {
                                                 <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                                                     <span>u/{post.author}</span>
                                                     <div className="flex items-center gap-1">
-                                                        <TrendingUp className="w-4 h-4" />
+                                                        <span className="material-symbols-outlined text-[16px]">trending_up</span>
                                                         {post.score}
                                                     </div>
                                                     <div className="flex items-center gap-1">
-                                                        <MessageCircle className="w-4 h-4" />
+                                                        <span className="material-symbols-outlined text-[16px]">chat</span>
                                                         {post.comments}
                                                     </div>
                                                 </div>
@@ -443,11 +443,11 @@ export default function ScrapingPage() {
                                         <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                                             <span>by {story.by}</span>
                                             <div className="flex items-center gap-1">
-                                                <TrendingUp className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">trending_up</span>
                                                 {story.score} points
                                             </div>
                                             <div className="flex items-center gap-1">
-                                                <MessageCircle className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">chat</span>
                                                 {story.comments} comments
                                             </div>
                                         </div>
@@ -485,13 +485,13 @@ export default function ScrapingPage() {
                                         className="block bg-white dark:bg-gray-900 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-800"
                                     >
                                         <div className="flex items-start gap-3">
-                                            <MapPin className="w-5 h-5 text-purple-600 dark:text-purple-400 mt-1" />
+                                            <span className="material-symbols-outlined text-[20px] text-purple-600 dark:text-purple-400 mt-1">location_on</span>
                                             <div className="flex-1">
                                                 <h4 className="font-bold text-gray-900 dark:text-white mb-1">{place.name}</h4>
                                                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{place.address}</p>
                                                 {place.rating && (
                                                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
-                                                        <Star className="w-4 h-4 text-yellow-500" />
+                                                        <span className="material-symbols-outlined text-[16px] text-yellow-500">star</span>
                                                         <span>{place.rating}</span>
                                                         {place.type && <span className="text-gray-400">• {place.type}</span>}
                                                     </div>

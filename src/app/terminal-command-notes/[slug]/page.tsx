@@ -1,6 +1,6 @@
 import { getCommandNote, getCommandNotes } from '@/lib/markdown';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Tag, Terminal } from 'lucide-react';
+
 
 export async function generateStaticParams() {
     const commands = await getCommandNotes();
@@ -30,7 +30,7 @@ export default async function CommandNotePage({ params }: { params: { slug: stri
                     href="/terminal-command-notes"
                     className="inline-flex items-center text-zinc-400 hover:text-white transition-colors mb-8 group"
                 >
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    <span className="material-symbols-outlined text-[16px] mr-2 group-hover:-translate-x-1 transition-transform">arrow_back</span>
                     <span className="font-mono text-sm">cd ..</span>
                 </Link>
 
@@ -38,7 +38,7 @@ export default async function CommandNotePage({ params }: { params: { slug: stri
                 <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 mb-12 backdrop-blur-sm">
                     <div className="flex items-center gap-3 mb-6">
                         <div className="p-2 bg-zinc-800 rounded-lg border border-zinc-700">
-                            <Terminal className="w-6 h-6 text-blue-400" />
+                            <span className="material-symbols-outlined text-[24px] text-blue-400">terminal</span>
                         </div>
                         <span className="font-mono text-zinc-500">{cmd.category || 'Snippet'}</span>
                     </div>
@@ -53,12 +53,12 @@ export default async function CommandNotePage({ params }: { params: { slug: stri
 
                     <div className="flex flex-wrap items-center gap-6 text-sm text-zinc-500 font-mono">
                         <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4" />
+                            <span className="material-symbols-outlined text-[16px]">calendar_today</span>
                             {cmd.date}
                         </div>
                         {cmd.tags && (
                             <div className="flex items-center gap-2">
-                                <Tag className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">local_offer</span>
                                 {cmd.tags.join(', ')}
                             </div>
                         )}

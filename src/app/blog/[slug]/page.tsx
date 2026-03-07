@@ -1,6 +1,6 @@
 import { getPostData, getBlogPosts } from "@/lib/markdown";
 import Link from "next/link";
-import { ArrowLeft, Share2, Twitter, Linkedin, MessageCircle } from "lucide-react";
+import { Twitter, Linkedin } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -51,7 +51,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className="min-h-screen py-20 px-6">
             <div className="max-w-4xl mx-auto">
                 <Link href="/blog" className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-8 transition-colors">
-                    <ArrowLeft className="w-4 h-4" />
+                    <span className="material-symbols-outlined text-[16px]">arrow_back</span>
                     <span>Back to Blog</span>
                 </Link>
 
@@ -81,7 +81,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     {/* Share Buttons */}
                     <div className="mt-12 pt-8 border-t border-[var(--card-border)]">
                         <h3 className="text-sm font-bold text-[var(--text-primary)] mb-4 uppercase tracking-wider flex items-center gap-2">
-                            <Share2 className="w-4 h-4" />
+                            <span className="material-symbols-outlined text-[16px]">share</span>
                             Share this article
                         </h3>
                         <div className="flex gap-4">
@@ -107,7 +107,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 rel="noopener noreferrer"
                                 className="p-3 bg-[var(--card-hover)] hover:bg-green-500 hover:text-white rounded-xl transition-all text-[var(--text-secondary)]"
                             >
-                                <MessageCircle className="w-5 h-5" />
+                                <span className="material-symbols-outlined text-[20px]">chat</span>
                             </a>
                         </div>
                     </div>

@@ -49,9 +49,10 @@ export async function generateResponse(message: string, mode: string = 'solution
         const validRequests = userRequests.filter(timestamp => now - timestamp < RATE_LIMIT_WINDOW);
 
         if (validRequests.length >= MAX_REQUESTS) {
-            const resetTime = Math.ceil((validRequests[0] + RATE_LIMIT_WINDOW - now) / 1000);
+            // Optional: You can uncomment below if you want the user to know how long to wait
+            // const resetTime = Math.ceil((validRequests[0] + RATE_LIMIT_WINDOW - now) / 1000);
             return {
-                error: `Terlalu banyak permintaan. Mohon tunggu ${resetTime} detik lagi sebelum mengirim pesan baru.`
+                error: 'Terlalu banyak permintaan saat ini. Sistem kami sedang menampung banyak traffic. Silakan coba beberapa saat lagi.'
             };
         }
 
@@ -59,15 +60,19 @@ export async function generateResponse(message: string, mode: string = 'solution
         validRequests.push(now);
         rateLimitMap.set(ip, validRequests);
 
-        // Clean up old entries periodically (optional optimization, keeping it simple here)
+        // Security: Periodically clear map to prevent memory leaks in long-running lambdas
+        if (rateLimitMap.size > 10000) {
+            rateLimitMap.clear();
+        }
     } catch (e) {
-        console.error("Rate limit check failed:", e);
-        // Fail open or closed? Let's fail open but log it to not block legit users if header parsing fails.
+        // Silently handle rate limit errors so valid users can occasionally pass if logic fails
+        console.error("Kesalahan internal pada pengecekan limit.");
     }
 
-    // 3. API Key Check
+    // 3. API Key Check (Generic error to not leak backend config state)
     if (!apiKey) {
-        return { error: 'Server belum dikonfigurasi (Missing API Key).' };
+        console.error('CRITICAL: Gemini API Key is missing from environment variables.');
+        return { error: 'Layanan AI saat ini tidak tersedia. Coba lagi nanti.' };
     }
 
     // 4. Gemini Interaction
@@ -171,7 +176,8 @@ export async function generateResponse(message: string, mode: string = 'solution
             }
         };
     } catch (error: unknown) {
-        console.error('Gemini API Error:', error);
-        return { error: 'Gagal mendapatkan respon dari AI. Silakan coba lagi nanti.' };
+        // Security: Do not expose raw Gemini errors to the client
+        console.error('[Gemini Services Error]:', error instanceof Error ? error.message : 'Unknown Error');
+        return { error: 'Sistem AI kami sedang mengalami gangguan koneksi. Silakan coba kembali.' };
     }
 }

@@ -1,8 +1,9 @@
 ---
 name: "Abyan Dimas R Mussyafa"
-role: "Cloud Engineer & Web Developer"
+# role: "Cloud Engineer & Web Developer"
+role: ""
 location: "Tegal, Indonesia"
-avatar: "/avatar.png"
+avatar: "/avatar.jpg"
 cv_link: "#"
 stats:
   work:
@@ -112,17 +113,19 @@ articles:
     url: "#"
 ---
 
-Seorang individu yang aktif dan memiliki ketertarikan kuat pada dunia teknologi, khususnya cloud computing dan pengembangan aplikasi berbasis web. 
+An active individual with a strong passion for the world of technology, particularly in cloud computing and web-based application development.
 
-Melalui berbagai pengalaman di organisasi, magang, dan pelatihan bersertifikat seperti **AWS SkillPath** dan **AWS re/Start**, saya terbiasa bekerja dalam tim, memecahkan masalah, dan terus mengembangkan diri.
+Through various experiences in organizations, internships, and certified training programs such as **AWS SkillPath** and **AWS re/Start**, I am accustomed to working in teams, solving problems, and continuously developing myself.
 
-### Pendidikan & Sertifikasi
+### Education & Certifications
+
 - **SMK Negeri 1 Adiwerna** - Teknik Jaringan Komputer dan Telekomunikasi
 - **AWS Academy Graduate** & **AWS Certified Cloud Practitioner**
 - **Red Hat System Administration II**
 
-### Keahlian Teknis
+### Technical Skills
+
 - **Cloud**: Amazon EC2, S3, RDS, Lambda, IAM, VPC
 - **DevOps**: Docker, GitHub Actions, CI/CD
 - **Development**: React.js, Next.js, Node.js, Python
-- **Manejemen Sistem**: Linux, Proxmox VE, Virtualization
+- **Systems Management**: Linux, Proxmox VE, Virtualization

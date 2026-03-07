@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { CloudOff, Home } from 'lucide-react';
+
 
 export default function NotFound() {
     return (
@@ -10,7 +10,7 @@ export default function NotFound() {
             {/* Icon & Glitch Effect Container */}
             <div className="relative mb-8 group">
                 <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors duration-500"></div>
-                <CloudOff className="w-32 h-32 text-[var(--text-secondary)] relative z-10 animate-pulse" />
+                <span className="material-symbols-outlined text-[128px] text-[var(--text-secondary)] relative z-10 animate-pulse">cloud_off</span>
             </div>
 
             {/* 404 Text */}
@@ -31,7 +31,7 @@ export default function NotFound() {
                 href="/"
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95"
             >
-                <Home className="w-4 h-4" />
+                <span className="material-symbols-outlined text-[16px]">home</span>
                 Return to Home
             </Link>
 

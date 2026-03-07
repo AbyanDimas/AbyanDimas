@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { CommandNoteData } from '@/lib/markdown';
-import { Hash, ChevronRight, Command, Search, Terminal } from 'lucide-react';
+
 
 interface CommandListProps {
     initialCommands: CommandNoteData[];
@@ -75,16 +75,16 @@ export default function CommandList({ initialCommands }: CommandListProps) {
                                 <div className="flex items-center gap-2 flex-wrap mb-4">
                                     {cmd.tags?.slice(0, 3).map(tag => (
                                         <div key={tag} className="flex items-center gap-1 text-xs text-zinc-500 font-mono">
-                                            <Hash className="w-3 h-3" /> {tag}
+                                            <span className="material-symbols-outlined text-[12px]">tag</span> {tag}
                                         </div>
                                     ))}
                                 </div>
 
                                 <div className="mt-auto pt-4 border-t border-zinc-900 flex items-center justify-between text-zinc-500 group-hover:text-zinc-300 transition-colors">
                                     <span className="text-sm font-mono flex items-center gap-2">
-                                        <Command className="w-3 h-3" /> View Source
+                                        <span className="material-symbols-outlined text-[12px]">keyboard_command_key</span> View Source
                                     </span>
-                                    <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                                    <span className="material-symbols-outlined text-[16px] transform group-hover:translate-x-1 transition-transform">chevron_right</span>
                                 </div>
                             </div>
                         </Link>
@@ -92,7 +92,7 @@ export default function CommandList({ initialCommands }: CommandListProps) {
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-zinc-800 border-dashed rounded-2xl bg-zinc-900/20">
-                    <Terminal className="w-12 h-12 mb-4 opacity-50" />
+                    <span className="material-symbols-outlined text-[48px] mb-4 opacity-50">terminal</span>
                     <p className="font-mono text-lg">No commands found matching "{searchQuery}"</p>
                     <p className="text-sm mt-2">Try adjusting your query or execute a different command.</p>
                 </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Upload, Download, Image as ImageIcon, Sliders, Trash2, CheckCircle2, ArrowRight } from 'lucide-react';
+
 import imageCompression from 'browser-image-compression';
 
 interface CompressedImage {
@@ -141,7 +141,7 @@ export default function ImageCompressorPage() {
                             <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
-                                        <ImageIcon className="w-6 h-6 text-white" />
+                                        <span className="material-symbols-outlined text-[24px] text-white">image</span>
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -159,7 +159,7 @@ export default function ImageCompressorPage() {
                                         className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-16 text-center cursor-pointer hover:border-teal-500 dark:hover:border-teal-500 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group/upload"
                                     >
                                         <div className="w-20 h-20 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center group-hover/upload:bg-teal-50 dark:group-hover/upload:bg-teal-900/20 transition-colors">
-                                            <Upload className="w-10 h-10 text-gray-400 group-hover/upload:text-teal-500 transition-colors" />
+                                            <span className="material-symbols-outlined text-[40px] text-gray-400 group-hover/upload:text-teal-500 transition-colors">upload</span>
                                         </div>
                                         <p className="text-base font-medium text-gray-900 dark:text-white mb-1">
                                             Click to upload image
@@ -185,7 +185,7 @@ export default function ImageCompressorPage() {
                                                 onClick={handleClear}
                                                 className="ml-4 px-4 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors flex items-center gap-2"
                                             >
-                                                <Trash2 className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">delete</span>
                                                 Clear
                                             </button>
                                         </div>
@@ -206,7 +206,7 @@ export default function ImageCompressorPage() {
                         {originalImage && (
                             <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <Sliders className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                                    <span className="material-symbols-outlined text-[20px] text-teal-600 dark:text-teal-400">tune</span>
                                     <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                         Compression Quality
                                     </h3>
@@ -253,7 +253,7 @@ export default function ImageCompressorPage() {
                                     <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl opacity-50 blur"></div>
                                     <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl">
                                         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                                            <CheckCircle2 className="w-5 h-5 text-teal-600" />
+                                            <span className="material-symbols-outlined text-[20px] text-teal-600">check_circle</span>
                                             Compressed Result
                                         </h3>
                                         <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 mb-4">
@@ -267,7 +267,7 @@ export default function ImageCompressorPage() {
                                             onClick={handleDownload}
                                             className="w-full px-4 py-3 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                                         >
-                                            <Download className="w-5 h-5" />
+                                            <span className="material-symbols-outlined text-[20px]">download</span>
                                             Download Compressed Image
                                         </button>
                                     </div>
@@ -276,7 +276,7 @@ export default function ImageCompressorPage() {
                                 {/* Stats Card */}
                                 <div className="bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl p-6 text-white shadow-xl">
                                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                                        <ArrowRight className="w-5 h-5" />
+                                        <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                                         Compression Stats
                                     </h3>
                                     <div className="space-y-4">
@@ -322,7 +322,7 @@ export default function ImageCompressorPage() {
                             <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-800">
                                 <div className="text-center py-16">
                                     <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 rounded-2xl flex items-center justify-center">
-                                        <ImageIcon className="w-8 h-8 text-teal-500 dark:text-teal-400" />
+                                        <span className="material-symbols-outlined text-[32px] text-teal-500 dark:text-teal-400">image</span>
                                     </div>
                                     <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                                         No image compressed yet

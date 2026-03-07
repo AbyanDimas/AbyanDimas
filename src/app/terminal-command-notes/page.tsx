@@ -1,5 +1,5 @@
 import { getCommandNotes } from '@/lib/markdown';
-import { Terminal } from 'lucide-react';
+
 import CommandList from '@/components/CommandList';
 
 export const metadata = {
@@ -17,7 +17,7 @@ export default async function TerminalCommandsPage() {
                 <div className="mb-12">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 bg-zinc-900 rounded-xl border border-zinc-800 shadow-xl">
-                            <Terminal className="w-8 h-8 text-green-500" />
+                            <span className="material-symbols-outlined text-[32px] text-green-500">terminal</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-white font-mono tracking-tight">
                             ~/commands

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw, Clock, Coffee, CheckCircle2, Plus, Trash2, Timer, Bell, X, EyeOff, Eye } from 'lucide-react';
+
 
 type TimerMode = 'focus' | 'shortBreak' | 'longBreak' | 'custom';
 
@@ -332,7 +332,7 @@ export default function PomodoroTimerPage() {
                                             onClick={() => setIsRunning(!isRunning)}
                                             className="w-16 h-16 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
                                         >
-                                            {isRunning ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+                                            {isRunning ? <span className="material-symbols-outlined text-[32px]">pause</span> : <span className="material-symbols-outlined text-[32px] ml-1">play_arrow</span>}
                                         </button>
                                         <button
                                             onClick={() => {
@@ -344,7 +344,7 @@ export default function PomodoroTimerPage() {
                                             }}
                                             className="w-16 h-16 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full flex items-center justify-center shadow-lg transition-all"
                                         >
-                                            <RotateCcw className="w-6 h-6" />
+                                            <span className="material-symbols-outlined text-[24px]">replay</span>
                                         </button>
                                     </div>
                                 </div>
@@ -355,7 +355,7 @@ export default function PomodoroTimerPage() {
                         <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                    <CheckCircle2 className="w-5 h-5 text-rose-600" />
+                                    <span className="material-symbols-outlined text-[20px] text-rose-600">check_circle</span>
                                     Daftar Tugas
                                 </h3>
                             </div>
@@ -372,7 +372,7 @@ export default function PomodoroTimerPage() {
                                     onClick={handleAddTask}
                                     className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-colors flex items-center gap-2"
                                 >
-                                    <Plus className="w-4 h-4" />
+                                    <span className="material-symbols-outlined text-[16px]">add</span>
                                 </button>
                             </div>
                             <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -404,7 +404,7 @@ export default function PomodoroTimerPage() {
                                                 onClick={() => handleDeleteTask(task.id)}
                                                 className="opacity-0 group-hover:opacity-100 p-1 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded transition-all"
                                             >
-                                                <Trash2 className="w-4 h-4" />
+                                                <span className="material-symbols-outlined text-[16px]">delete</span>
                                             </button>
                                         </div>
                                     ))
@@ -419,7 +419,7 @@ export default function PomodoroTimerPage() {
                             {/* Today's Stats */}
                             <div className="bg-gradient-to-br from-rose-500 to-red-500 rounded-2xl p-6 text-white shadow-xl">
                                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                                    <Timer className="w-5 h-5" />
+                                    <span className="material-symbols-outlined text-[20px]">timer</span>
                                     Progres Hari Ini
                                 </h3>
                                 <div className="space-y-4">
@@ -468,9 +468,9 @@ export default function PomodoroTimerPage() {
                                             >
                                                 <div className="flex items-center gap-2">
                                                     {session.mode === 'focus' ? (
-                                                        <Clock className="w-4 h-4 text-rose-600" />
+                                                        <span className="material-symbols-outlined text-[16px] text-rose-600">schedule</span>
                                                     ) : (
-                                                        <Coffee className="w-4 h-4 text-blue-600" />
+                                                        <span className="material-symbols-outlined text-[16px] text-blue-600">coffee</span>
                                                     )}
                                                     <span className="text-sm text-gray-900 dark:text-white capitalize">
                                                         {session.mode === 'shortBreak' ? 'Istirahat Pendek' : session.mode === 'longBreak' ? 'Istirahat Panjang' : session.mode === 'custom' ? 'Kustom' : 'Fokus'}
@@ -496,7 +496,7 @@ export default function PomodoroTimerPage() {
                                             onClick={requestNotificationPermission}
                                             className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-xl transition-colors text-sm font-medium flex items-center justify-center gap-2"
                                         >
-                                            <Bell className="w-4 h-4" />
+                                            <span className="material-symbols-outlined text-[16px]">notifications</span>
                                             Aktifkan Notifikasi
                                         </button>
                                     )}
@@ -505,7 +505,7 @@ export default function PomodoroTimerPage() {
                                             onClick={testNotification}
                                             className="w-full px-4 py-3 bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 text-green-700 dark:text-green-400 rounded-xl transition-colors text-sm font-medium flex items-center justify-center gap-2"
                                         >
-                                            <Bell className="w-4 h-4" />
+                                            <span className="material-symbols-outlined text-[16px]">notifications</span>
                                             Test Notifikasi
                                         </button>
                                     )}
@@ -514,7 +514,7 @@ export default function PomodoroTimerPage() {
                                             onClick={() => setShowNotifModal(true)}
                                             className="w-full px-4 py-3 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-700 dark:text-red-400 rounded-xl transition-colors text-sm font-medium flex items-center justify-center gap-2"
                                         >
-                                            <Bell className="w-4 h-4" />
+                                            <span className="material-symbols-outlined text-[16px]">notifications</span>
                                             Notifikasi Diblokir
                                         </button>
                                     )}
@@ -530,7 +530,7 @@ export default function PomodoroTimerPage() {
                     className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-10"
                     title={showStats ? 'Sembunyikan Stats' : 'Tampilkan Stats'}
                 >
-                    {showStats ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showStats ? <span className="material-symbols-outlined text-[20px]">visibility_off</span> : <span className="material-symbols-outlined text-[20px]">visibility</span>}
                 </button>
             </div>
 
@@ -540,14 +540,14 @@ export default function PomodoroTimerPage() {
                     <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-800" onClick={(e) => e.stopPropagation()}>
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                <Bell className="w-5 h-5 text-rose-600" />
+                                <span className="material-symbols-outlined text-[20px] text-rose-600">notifications</span>
                                 Notifikasi Diblokir
                             </h3>
                             <button
                                 onClick={() => setShowNotifModal(false)}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                             >
-                                <X className="w-5 h-5 text-gray-500" />
+                                <span className="material-symbols-outlined text-[20px] text-gray-500">close</span>
                             </button>
                         </div>
                         <div className="space-y-4 text-sm text-gray-700 dark:text-gray-300">

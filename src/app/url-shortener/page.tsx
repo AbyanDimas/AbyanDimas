@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Link2, Copy, Check, Trash2, QrCode, ExternalLink, BarChart3, Calendar } from 'lucide-react';
+
 import QRCode from 'qrcode';
 
 interface ShortenedURL {
@@ -148,7 +148,7 @@ export default function URLShortenerPage() {
                             <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-                                        <Link2 className="w-6 h-6 text-white" />
+                                        <span className="material-symbols-outlined text-[24px] text-white">link</span>
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -210,7 +210,7 @@ export default function URLShortenerPage() {
                                         onClick={handleShorten}
                                         className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                                     >
-                                        <Link2 className="w-5 h-5" />
+                                        <span className="material-symbols-outlined text-[20px]">link</span>
                                         Shorten URL Now
                                     </button>
                                 </div>
@@ -224,7 +224,7 @@ export default function URLShortenerPage() {
                                 <div className="relative">
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                                            <Link2 className="w-6 h-6 text-white" />
+                                            <span className="material-symbols-outlined text-[24px] text-white">link</span>
                                         </div>
                                     </div>
                                     <p className="text-4xl font-black text-white mb-1">
@@ -241,7 +241,7 @@ export default function URLShortenerPage() {
                                 <div className="relative">
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                                            <BarChart3 className="w-6 h-6 text-white" />
+                                            <span className="material-symbols-outlined text-[24px] text-white">bar_chart</span>
                                         </div>
                                     </div>
                                     <p className="text-4xl font-black text-white mb-1">
@@ -268,7 +268,7 @@ export default function URLShortenerPage() {
                             {urls.length === 0 ? (
                                 <div className="text-center py-16">
                                     <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-2xl flex items-center justify-center">
-                                        <Link2 className="w-10 h-10 text-purple-500 dark:text-purple-400" />
+                                        <span className="material-symbols-outlined text-[40px] text-purple-500 dark:text-purple-400">link</span>
                                     </div>
                                     <p className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                                         No links yet
@@ -296,7 +296,7 @@ export default function URLShortenerPage() {
                                                                 className="text-lg font-bold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors truncate flex items-center gap-2 group/link"
                                                             >
                                                                 {shortUrl}
-                                                                <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                                                                <span className="material-symbols-outlined text-[16px] opacity-0 group-hover/link:opacity-100 transition-opacity">open_in_new</span>
                                                             </a>
                                                             <button
                                                                 onClick={() => handleCopy(shortUrl, url.id)}
@@ -304,9 +304,9 @@ export default function URLShortenerPage() {
                                                                 title="Copy"
                                                             >
                                                                 {copiedId === url.id ? (
-                                                                    <Check className="w-5 h-5 text-green-500" />
+                                                                    <span className="material-symbols-outlined text-[20px] text-green-500">check</span>
                                                                 ) : (
-                                                                    <Copy className="w-5 h-5 text-gray-400 hover:text-purple-600" />
+                                                                    <span className="material-symbols-outlined text-[20px] text-gray-400 hover:text-purple-600">content_copy</span>
                                                                 )}
                                                             </button>
                                                         </div>
@@ -315,11 +315,11 @@ export default function URLShortenerPage() {
                                                         </p>
                                                         <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
                                                             <span className="flex items-center gap-1.5 px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                                                                <Calendar className="w-3.5 h-3.5" />
+                                                                <span className="material-symbols-outlined text-[14px]">calendar_today</span>
                                                                 {formatDate(url.createdAt)}
                                                             </span>
                                                             <span className="flex items-center gap-1.5 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold">
-                                                                <BarChart3 className="w-3.5 h-3.5" />
+                                                                <span className="material-symbols-outlined text-[14px]">bar_chart</span>
                                                                 {url.clicks} clicks
                                                             </span>
                                                         </div>
@@ -330,14 +330,14 @@ export default function URLShortenerPage() {
                                                             className="p-3 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-xl transition-colors border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
                                                             title="QR Code"
                                                         >
-                                                            <QrCode className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                                            <span className="material-symbols-outlined text-[20px] text-blue-600 dark:text-blue-400">qr_code</span>
                                                         </button>
                                                         <button
                                                             onClick={() => handleDelete(url.id)}
                                                             className="p-3 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-colors border border-transparent hover:border-red-200 dark:hover:border-red-800"
                                                             title="Delete"
                                                         >
-                                                            <Trash2 className="w-5 h-5 text-red-600 dark:text-red-400" />
+                                                            <span className="material-symbols-outlined text-[20px] text-red-600 dark:text-red-400">delete</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -355,7 +355,7 @@ export default function URLShortenerPage() {
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-50 blur"></div>
                             <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
                                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                                    <QrCode className="w-5 h-5 text-purple-600" />
+                                    <span className="material-symbols-outlined text-[20px] text-purple-600">qr_code</span>
                                     QR Code Preview
                                 </h3>
                                 {qrCodeUrl && selectedUrl ? (
@@ -381,7 +381,7 @@ export default function URLShortenerPage() {
                                 ) : (
                                     <div className="text-center py-16">
                                         <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-2xl flex items-center justify-center">
-                                            <QrCode className="w-8 h-8 text-purple-500 dark:text-purple-400" />
+                                            <span className="material-symbols-outlined text-[32px] text-purple-500 dark:text-purple-400">qr_code</span>
                                         </div>
                                         <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                                             No QR Code

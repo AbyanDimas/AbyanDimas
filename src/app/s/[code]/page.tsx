@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
+
 
 interface ShortenedURL {
     id: string;
@@ -48,7 +48,7 @@ export default function RedirectPage() {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
             <div className="text-center">
-                <Loader2 className="w-12 h-12 mx-auto mb-4 text-purple-600 dark:text-purple-400 animate-spin" />
+                <span className="material-symbols-outlined text-[48px] mx-auto mb-4 text-purple-600 dark:text-purple-400 animate-spin">progress_activity</span>
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     Mengalihkan...
                 </h1>

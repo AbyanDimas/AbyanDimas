@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Sun, Moon, Monitor, FolderKanban } from "lucide-react";
+
 
 export default function ThemeToggle() {
     const [mounted, setMounted] = useState(false);
@@ -19,10 +19,10 @@ export default function ThemeToggle() {
     }
 
     const themes = [
-        { id: 'light', icon: Sun, label: 'Light' },
-        { id: 'dark', icon: Moon, label: 'Dark' },
-        { id: 'system', icon: Monitor, label: 'System' },
-        { id: 'tokyonight', icon: FolderKanban, label: 'Tokyo Night' },
+        { id: 'light', icon: 'light_mode', label: 'Light' },
+        { id: 'dark', icon: 'dark_mode', label: 'Dark' },
+        { id: 'system', icon: 'desktop_windows', label: 'System' },
+        { id: 'tokyonight', icon: 'view_kanban', label: 'Tokyo Night' },
     ];
 
     const currentTheme = themes.find(t => t.id === theme) || themes[0];
@@ -33,7 +33,7 @@ export default function ThemeToggle() {
                 className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                 aria-label="Toggle Theme"
             >
-                <currentTheme.icon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <span className="material-symbols-outlined text-[20px] text-gray-600 dark:text-gray-300">{currentTheme.icon}</span>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300 hidden sm:block">
                     {currentTheme.label}
                 </span>
@@ -47,7 +47,7 @@ export default function ThemeToggle() {
                         className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-white/5 ${theme === t.id ? 'text-blue-600 font-medium' : 'text-gray-600 dark:text-gray-400'
                             }`}
                     >
-                        <t.icon className="w-4 h-4" />
+                        <span className="material-symbols-outlined text-[16px]">{t.icon}</span>
                         {t.label}
                     </button>
                 ))}

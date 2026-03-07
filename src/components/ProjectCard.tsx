@@ -1,4 +1,4 @@
-import { Star, GitFork, Book } from "lucide-react";
+
 import { ProjectData } from "@/lib/markdown";
 
 interface ProjectCardProps {
@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         >
             <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-4 h-full flex flex-col hover:border-blue-500 transition-colors">
                 <div className="flex items-center gap-2 mb-2 text-blue-600 font-semibold group-hover:underline">
-                    <Book className="w-4 h-4" />
+                    <span className="material-symbols-outlined text-[16px]">book</span>
                     <span className="truncate">{project.title}</span>
                 </div>
 
@@ -33,12 +33,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     </div>
 
                     <div className="flex items-center gap-1 hover:text-blue-600">
-                        <Star className="w-3.5 h-3.5" />
+                        <span className="material-symbols-outlined text-[14px]">star</span>
                         <span>{project.stars}</span>
                     </div>
 
                     <div className="flex items-center gap-1 hover:text-blue-600">
-                        <GitFork className="w-3.5 h-3.5" />
+                        <span className="material-symbols-outlined text-[14px]">fork_right</span>
                         <span>{project.forks}</span>
                     </div>
                 </div>

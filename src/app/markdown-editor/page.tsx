@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileText, Download, Save, Trash2, Eye, EyeOff, Type, Bold, Italic, Code, List, Link2, Image as ImageIcon, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -177,21 +177,21 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="Bold"
                             >
-                                <Bold className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">format_bold</span>
                             </button>
                             <button
                                 onClick={() => insertMarkdown('*', '*')}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="Italic"
                             >
-                                <Italic className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">format_italic</span>
                             </button>
                             <button
                                 onClick={() => insertMarkdown('`', '`')}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="Code"
                             >
-                                <Code className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">code</span>
                             </button>
                         </div>
 
@@ -216,7 +216,7 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="List"
                             >
-                                <List className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">list</span>
                             </button>
                         </div>
 
@@ -227,14 +227,14 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="Link"
                             >
-                                <Link2 className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">link</span>
                             </button>
                             <button
                                 onClick={() => insertMarkdown('![alt](', ')')}
                                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 title="Image"
                             >
-                                <ImageIcon className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                                <span className="material-symbols-outlined text-[16px] text-gray-700 dark:text-gray-300">image</span>
                             </button>
                         </div>
 
@@ -245,34 +245,34 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                 className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300"
                                 title="Toggle Drafts"
                             >
-                                {showDrafts ? <PanelLeftClose className="w-4 h-4" /> : <PanelLeftOpen className="w-4 h-4" />}
+                                {showDrafts ? <span className="material-symbols-outlined text-[16px]">left_panel_close</span> : <span className="material-symbols-outlined text-[16px]">left_panel_open</span>}
                             </button>
                             <button
                                 onClick={() => setShowPreview(!showPreview)}
                                 className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300"
                             >
-                                {showPreview ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                {showPreview ? <span className="material-symbols-outlined text-[16px]">visibility_off</span> : <span className="material-symbols-outlined text-[16px]">visibility</span>}
                                 {showPreview ? 'Hide' : 'Show'} Preview
                             </button>
                             <button
                                 onClick={handleSaveDraft}
                                 className="px-3 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <Save className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">save</span>
                                 Save
                             </button>
                             <button
                                 onClick={handleExportMarkdown}
                                 className="px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <Download className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">download</span>
                                 .md
                             </button>
                             <button
                                 onClick={handleExportHTML}
                                 className="px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <Download className="w-4 h-4" />
+                                <span className="material-symbols-outlined text-[16px]">download</span>
                                 .html
                             </button>
                         </div>
@@ -322,7 +322,7 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                                     }}
                                                     className="mt-2 opacity-0 group-hover:opacity-100 p-1 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded transition-all"
                                                 >
-                                                    <Trash2 className="w-3 h-3" />
+                                                    <span className="material-symbols-outlined text-[12px]">delete</span>
                                                 </button>
                                             </div>
                                         ))
@@ -340,7 +340,7 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
                                 <div className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden">
                                     <div className="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
-                                        <Type className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                        <span className="material-symbols-outlined text-[20px] text-amber-600 dark:text-amber-400">text_fields</span>
                                         <h3 className="text-sm font-bold text-gray-900 dark:text-white">
                                             Editor
                                         </h3>
@@ -358,7 +358,7 @@ ${document.querySelector('.prose')?.innerHTML || ''}
                             {showPreview && (
                                 <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
                                     <div className="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
-                                        <FileText className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                        <span className="material-symbols-outlined text-[20px] text-orange-600 dark:text-orange-400">description</span>
                                         <h3 className="text-sm font-bold text-gray-900 dark:text-white">
                                             Preview
                                         </h3>
