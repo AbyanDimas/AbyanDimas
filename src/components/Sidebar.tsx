@@ -156,11 +156,14 @@ export default function Sidebar({ data }: SidebarProps) {
 
 
       {/* Existing Skills Widget */}
-      <div className="bg-[var(--card-bg)] rounded-3xl p-6 shadow-sm border border-[var(--card-border)]">
-        <h3 className="font-bold text-[var(--text-primary)] mb-4">Skills</h3>
-        <div className="flex flex-wrap gap-2">
+      <div className="bg-[var(--card-bg)] rounded-3xl p-6 shadow-sm border border-[var(--card-border)] relative overflow-hidden group">
+        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+          <span className="material-symbols-outlined text-[64px]">laptop_mac</span>
+        </div>
+        <h3 className="font-bold text-[var(--text-primary)] mb-4 relative z-10">Skills</h3>
+        <div className="flex flex-wrap gap-2 relative z-10">
           {data.skills.map((skill) => (
-            <span key={skill} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors cursor-default">
+            <span key={skill} className="px-3 py-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800/50 text-xs font-semibold rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-all cursor-default">
               {skill}
             </span>
           ))}
@@ -169,22 +172,28 @@ export default function Sidebar({ data }: SidebarProps) {
 
       {/* Existing Verifications Widget */}
       <div className="bg-[var(--card-bg)] rounded-3xl p-6 shadow-sm border border-[var(--card-border)]">
-        <h3 className="font-bold text-[var(--text-primary)] mb-4">Verifications</h3>
+        <h3 className="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+          Verifications
+          <span className="material-symbols-outlined text-blue-500 text-[18px]">verified</span>
+        </h3>
         <ul className="space-y-4">
           {data.verifications.map((item) => {
             return (
-              <li key={item.label} className="flex items-center justify-between group">
+              <li key={item.label} className="flex items-center justify-between group p-2 -mx-2 rounded-xl hover:bg-[var(--card-hover)] transition-colors">
                 <div className="flex items-center gap-3 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-[var(--card-hover)] flex items-center justify-center">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${item.verified ? 'bg-green-50 dark:bg-green-900/20 text-green-600' : 'bg-gray-50 dark:bg-gray-800 text-gray-400'}`}>
                     <span className="material-symbols-outlined text-[16px]">{materialIcons[item.icon] || "verified_user"}</span>
                   </div>
-                  <span className="text-sm font-medium text-[var(--text-secondary)]">{item.label}</span>
+                  <span className="text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">{item.label}</span>
                 </div>
                 {item.verified ? (
-                  <span className="material-symbols-outlined text-[16px] text-green-500">check_circle</span>
+                  <div className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm border border-green-200 dark:border-green-800/50">
+                    <span className="material-symbols-outlined text-[12px]">check_circle</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider">Verified</span>
+                  </div>
                 ) : (
                   item.action && (
-                    <button className="px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
+                    <button className="px-3 py-1 text-xs font-bold text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full hover:bg-white dark:hover:bg-gray-700 hover:shadow-sm transition-all">
                       {item.action}
                     </button>
                   )

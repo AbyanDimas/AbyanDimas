@@ -37,8 +37,10 @@ export default function ProfileBanner({ data }: ProfileBannerProps) {
 
               <div className="mt-14 lg:mt-16 space-y-3">
                 <div>
-                  <h1 className="text-2xl font-bold text-[var(--text-primary)]">{data.name}</h1>
-                  <p className="text-[var(--text-secondary)] font-medium">{data.role}</p>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-2xl font-bold text-[var(--text-primary)]">{data.name}</h1>
+                  </div>
+                  <p className="text-[var(--text-secondary)] font-medium mt-1">{data.role}</p>
                 </div>
 
                 <div className="flex items-center gap-2 text-[var(--text-secondary)] text-sm bg-[var(--input-border)] px-3 py-1.5 rounded-lg w-fit dark:text-white">

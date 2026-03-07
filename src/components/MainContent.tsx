@@ -64,9 +64,31 @@ export default function MainContent({ data, blogPosts, projects }: MainContentPr
             <section>
               <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">About Me</h2>
               <div
-                className="text-[var(--text-secondary)] text-sm leading-relaxed space-y-4 prose prose-sm max-w-none dark:prose-invert"
+                className="text-[var(--text-secondary)] text-sm leading-relaxed space-y-4 prose prose-sm max-w-none dark:prose-invert mb-6"
                 dangerouslySetInnerHTML={{ __html: data.contentHtml }}
               />
+              <div className="flex flex-wrap gap-2.5">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-orange-800/50 text-amber-700 dark:text-amber-400 text-xs font-bold shadow-sm hover:scale-105 transition-transform cursor-default">
+                  <span className="material-symbols-outlined text-[16px]">local_fire_department</span>
+                  Fast Learner
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-indigo-800/50 text-blue-700 dark:text-blue-400 text-xs font-bold shadow-sm hover:scale-105 transition-transform cursor-default">
+                  <span className="material-symbols-outlined text-[16px]">terminal</span>
+                  Terminal Lover
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-100 to-rose-100 dark:from-pink-900/20 dark:to-rose-900/20 border border-pink-200 dark:border-rose-800/50 text-pink-700 dark:text-pink-400 text-xs font-bold shadow-sm hover:scale-105 transition-transform cursor-default">
+                  <span className="material-symbols-outlined text-[16px]">favorite</span>
+                  Clean Code
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-200 dark:border-teal-800/50 text-emerald-700 dark:text-emerald-400 text-xs font-bold shadow-sm hover:scale-105 transition-transform cursor-default">
+                  <span className="material-symbols-outlined text-[16px]">coffee</span>
+                  Coffee Fueled
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-100 to-fuchsia-100 dark:from-purple-900/20 dark:to-fuchsia-900/20 border border-purple-200 dark:border-fuchsia-800/50 text-purple-700 dark:text-purple-400 text-xs font-bold shadow-sm hover:scale-105 transition-transform cursor-default">
+                  <span className="material-symbols-outlined text-[16px]">rocket_launch</span>
+                  Always Shipping
+                </div>
+              </div>
             </section>
 
             {/* Experience */}
@@ -280,9 +302,14 @@ export default function MainContent({ data, blogPosts, projects }: MainContentPr
                   <a
                     key={app.name}
                     href={app.href}
-                    className="group flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-[var(--card-hover)] transition-all duration-300 hover:scale-105"
+                    className="relative group flex flex-col items-center gap-3 p-5 rounded-3xl bg-transparent hover:bg-gradient-to-b hover:from-[var(--card-hover)] hover:to-transparent border border-transparent hover:border-[var(--card-border)] transition-all duration-500 hover:-translate-y-2 overflow-hidden"
                   >
-                    <div className={`w-16 h-16 rounded-[1.25rem] ${app.bgColor} shadow-lg flex items-center justify-center group-hover:shadow-xl transition-shadow duration-300`}>
+                    {/* Background glow on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl rounded-full" style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }} ></div>
+
+                    <div className={`relative z-10 w-16 h-16 rounded-2xl ${app.bgColor} shadow-lg flex items-center justify-center group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] group-hover:scale-110 transition-all duration-500 overflow-hidden`}>
+                      {/* Inner card shine effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-tr from-transparent via-white to-transparent -translate-x-full group-hover:animate-shimmer delay-100"></div>
                       <span className="material-symbols-outlined text-[32px] text-white" style={{ fontVariationSettings: "'wght' 500" }}>{app.icon}</span>
                     </div>
                     <div className="text-center">
