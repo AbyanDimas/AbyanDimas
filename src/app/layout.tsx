@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Providers } from "./providers";
 
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://abyandimas.me'), // Replace with actual domain
   title: {
