@@ -1,5 +1,5 @@
 ---
-title: "Deploy OpenStack dengan Docker Compose: Dari Nol Sampai Jalan"
+title: "Deploy OpenStack dengan Docker Compose"
 date: "2026-03-10"
 author: "Abyan Dimas"
 excerpt: "OpenStack sudah lama jadi tulang punggung cloud privat di banyak perusahaan. Tapi setup-nya yang rumit sering bikin orang mundur. Dengan Docker Compose dan sedikit kesabaran, semuanya jauh lebih bisa dijangkau."
