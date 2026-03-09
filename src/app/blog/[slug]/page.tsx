@@ -5,6 +5,7 @@ import { Twitter, Linkedin } from "lucide-react";
 import MarkdownViewer from "@/components/MarkdownViewer";
 import CopyLinkButton from "@/components/CopyLinkButton";
 import TableOfContents from "@/components/TableOfContents";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -66,6 +67,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     return (
         <div className="min-h-screen py-24 px-6 md:px-12 bg-white dark:bg-[#0a0a0a]">
+            <ReadingProgressBar />
             <div className="max-w-[1400px] mx-auto">
                 <article>
                     {/* JSON-LD Structured Data for Google Rich Results */}

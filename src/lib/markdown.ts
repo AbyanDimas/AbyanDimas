@@ -183,6 +183,12 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
         });
     });
 
+    // Add referrerpolicy and lazy loading to all images to prevent hotlink blocking
+    $('img').each(function () {
+        $(this).attr('referrerpolicy', 'no-referrer');
+        $(this).attr('loading', 'lazy');
+    });
+
     const contentHtml = $.html();
 
     return {
