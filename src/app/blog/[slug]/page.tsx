@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Twitter, Linkedin } from "lucide-react";
 import MarkdownViewer from "@/components/MarkdownViewer";
 import CopyLinkButton from "@/components/CopyLinkButton";
+import TableOfContents from "@/components/TableOfContents";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -150,20 +151,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         {/* Left Sidebar: Table of Contents */}
                         <aside className="hidden lg:block sticky top-32">
                             {post.toc && post.toc.length > 0 && (
-                                <nav className="border-l-2 border-zinc-200 dark:border-zinc-800 pl-4 py-1 space-y-4 text-sm font-medium">
-                                    {post.toc.map((heading) => (
-                                        <a
-                                            key={heading.id}
-                                            href={`#${heading.id}`}
-                                            className={`block transition-colors ${heading.level === 2
-                                                ? 'text-zinc-900 dark:text-white font-bold'
-                                                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white ml-3 text-[13px]'
-                                                }`}
-                                        >
-                                            {heading.title}
-                                        </a>
-                                    ))}
-                                </nav>
+                                <TableOfContents toc={post.toc} />
                             )}
                         </aside>
 

@@ -86,7 +86,7 @@ export default function BlogList({ initialPosts }: BlogListProps) {
     return (
         <div className="space-y-16 animate-in fade-in duration-500 font-sans">
             {/* Hero Section */}
-            {heroPostsCount > 0 && (
+            {heroPosts.length > 0 && (
                 <div className="relative mb-24 lg:mb-32">
                     {/* Maintain layout space since content will be absolute positioned */}
                     <div className="hidden lg:block w-full" style={{ paddingBottom: '45%' }}></div>
