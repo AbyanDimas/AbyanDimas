@@ -1,6 +1,6 @@
 ---
 title: "Deploy OpenStack dengan Docker Compose: Dari Nol Sampai Jalan"
-date: "2025-02-01"
+date: "2026-03-10"
 author: "Abyan Dimas"
 excerpt: "OpenStack sudah lama jadi tulang punggung cloud privat di banyak perusahaan. Tapi setup-nya yang rumit sering bikin orang mundur. Dengan Docker Compose dan sedikit kesabaran, semuanya jauh lebih bisa dijangkau."
 coverImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/OpenStack%C2%AE_Logo_2016.svg/1200px-OpenStack%C2%AE_Logo_2016.svg.png"
@@ -35,7 +35,7 @@ OpenStack deployment berisi sejumlah komponen yang masing-masing menyediakan API
 **Compute** —> untuk menjalankan virtual machine dan container.
 Nova adalah compute service utama, bagian paling inti dari OpenStack. Zun untuk yang butuh menjalankan container langsung tanpa overhead VM penuh.
 
-**Hardware Lifecycle** — untuk mengelola hardware fisik.
+**Hardware Lifecycle** —> untuk mengelola hardware fisik.
 Ironic mengurus provisioning bare metal server, jadi bukan hanya VM tapi server fisik pun bisa dikelola lewat OpenStack. Cyborg menangani lifecycle management untuk akselerator seperti GPU dan FPGA.
 
 **Storage** —> ada tiga jenis storage yang berbeda fungsinya.
