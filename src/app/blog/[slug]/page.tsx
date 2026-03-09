@@ -1,5 +1,6 @@
 import { getPostData, getBlogPosts } from "@/lib/markdown";
 import Link from "next/link";
+import Image from "next/image";
 import { Twitter, Linkedin } from "lucide-react";
 import MarkdownViewer from "@/components/MarkdownViewer";
 import CopyLinkButton from "@/components/CopyLinkButton";
@@ -115,10 +116,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         {/* Hero Image Container */}
                         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.3/1] bg-zinc-100 dark:bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 mb-6 shadow-sm flex items-center justify-center p-2">
                             {post.coverImage ? (
-                                <img
+                                <Image
                                     src={post.coverImage}
                                     alt={post.title}
-                                    className="w-full h-full object-cover rounded-[1.25rem] shadow-sm"
+                                    fill
+                                    priority
+                                    sizes="(max-width: 1024px) 100vw, 900px"
+                                    className="object-cover rounded-[1.25rem] shadow-sm"
                                 />
                             ) : (
                                 <div className="w-full h-full bg-white dark:bg-[#111] rounded-[1.25rem] shadow-sm flex items-center justify-center">

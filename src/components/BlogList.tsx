@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { BlogPostData } from '@/lib/markdown';
 
@@ -15,7 +16,8 @@ export default function BlogList({ initialPosts }: BlogListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeCategory, setActiveCategory] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 13; // Use 7 (1 hero + 6 grid) or 10  (1 hero + 9 grid) depending on needs. Let's use 7.
+    const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+    const postsPerPage = 12; // Adjusted to evenly fit grid after hero
 
     // Filter posts based on search query and category
     const filteredPosts = useMemo(() => {
@@ -66,60 +68,107 @@ export default function BlogList({ initialPosts }: BlogListProps) {
         return pages;
     };
 
-    // We use the first post as the Hero, only if on page 1, search is empty, category is All
+    // We use the first 3 posts as the Hero slider, only if on page 1, search is empty, category is All
     const isDefaultView = currentPage === 1 && searchQuery === '' && activeCategory === 'All';
-    const heroPost = isDefaultView && currentPosts.length > 0 ? currentPosts[0] : null;
-    const gridPosts = isDefaultView ? currentPosts.slice(1) : currentPosts;
+    const heroPostsCount = Math.min(3, currentPosts.length);
+    const heroPosts = isDefaultView ? currentPosts.slice(0, heroPostsCount) : [];
+    const heroPost = heroPosts.length > 0 ? heroPosts[currentHeroIndex % heroPostsCount] : null;
+    const gridPosts = isDefaultView ? currentPosts.slice(heroPostsCount) : currentPosts;
+
+    useEffect(() => {
+        if (!isDefaultView || heroPostsCount <= 1) return;
+        const interval = setInterval(() => {
+            setCurrentHeroIndex((prev) => (prev + 1) % heroPostsCount);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [isDefaultView, heroPostsCount]);
 
     return (
         <div className="space-y-16 animate-in fade-in duration-500 font-sans">
             {/* Hero Section */}
-            {heroPost && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 min-h-[500px]">
-                    {/* Left: Image with decorative background */}
-                    <Link href={`/blog/${heroPost.slug}`} className="relative block group w-full lg:w-[85%] mx-auto lg:mx-0">
-                        {/* Decorative Background Pattern/Shadow */}
-                        <div className="absolute inset-0 bg-transparent rounded-[1.5rem] transform translate-x-4 -translate-y-4 opacity-50 pointer-events-none transition-transform group-hover:translate-x-6 group-hover:-translate-y-6 duration-300 border border-zinc-200 dark:border-zinc-800" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }}>
-                            <div className="w-full h-full dark:hidden" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                            <div className="w-full h-full hidden dark:block" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                        </div>
+            {heroPostsCount > 0 && (
+                <div className="relative mb-24 lg:mb-32">
+                    {/* Maintain layout space since content will be absolute positioned */}
+                    <div className="hidden lg:block w-full" style={{ paddingBottom: '45%' }}></div>
+                    <div className="block lg:hidden w-full" style={{ paddingBottom: '120%' }}></div>
 
-                        {/* Image */}
-                        <div className="relative z-10 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] shadow-2xl">
-                            {heroPost.coverImage ? (
-                                <div
-                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                    style={{ backgroundImage: `url(${heroPost.coverImage})` }}
-                                />
-                            ) : (
-                                <div className="absolute inset-0 bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-[64px] text-zinc-400">image</span>
+                    {heroPosts.map((post, index) => {
+                        const isActive = index === currentHeroIndex;
+                        return (
+                            <div
+                                key={post.slug}
+                                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${isActive ? 'opacity-100 z-10 translate-y-0 pointer-events-auto' : 'opacity-0 z-0 translate-y-4 pointer-events-none'}`}
+                            >
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
+                                    {/* Left: Image with decorative background */}
+                                    <Link href={`/blog/${post.slug}`} className="relative block group w-full lg:w-[85%] mx-auto lg:mx-0 h-full max-h-[500px]">
+                                        {/* Decorative Background Pattern/Shadow */}
+                                        <div className="absolute inset-0 bg-transparent rounded-[1.5rem] transform translate-x-4 -translate-y-4 opacity-50 pointer-events-none transition-transform group-hover:translate-x-6 group-hover:-translate-y-6 duration-300 border border-zinc-200 dark:border-zinc-800" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }}>
+                                            <div className="w-full h-full dark:hidden" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+                                            <div className="w-full h-full hidden dark:block" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+                                        </div>
+
+                                        {/* Image */}
+                                        <div className="relative z-10 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] w-full h-full overflow-hidden rounded-[1.5rem] shadow-2xl bg-zinc-100 dark:bg-zinc-800">
+                                            {post.coverImage ? (
+                                                <Image
+                                                    src={post.coverImage}
+                                                    alt={`Cover image for ${post.title}`}
+                                                    fill
+                                                    priority={index === 0}
+                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                                                />
+                                            ) : (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <span className="material-symbols-outlined text-[64px] text-zinc-400">image</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Link>
+
+                                    {/* Right: Content */}
+                                    <div className="flex flex-col justify-center max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+                                        <span className="text-zinc-400 dark:text-zinc-500 text-xs font-bold uppercase tracking-[0.2em] mb-6 block">Latest Post</span>
+                                        <Link href={`/blog/${post.slug}`} className="group inline-block">
+                                            <h2 className={`text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-semibold text-zinc-900 dark:text-zinc-100 mb-8 leading-[1.1] tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors transform duration-700 ease-out delay-100 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                                                {post.title}
+                                            </h2>
+                                        </Link>
+
+                                        <div className={`flex items-center justify-center lg:justify-start gap-2 text-zinc-600 dark:text-zinc-400 text-sm font-medium mb-10 transform duration-700 ease-out delay-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                                            <span>{post.date}</span>
+                                            <span>/</span>
+                                            <span>{post.author}</span>
+                                        </div>
+
+                                        <div className={`transform duration-700 ease-out delay-300 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                                            <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg">
+                                                Read more <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
-                            )}
-                        </div>
-                    </Link>
+                            </div>
+                        );
+                    })}
 
-                    {/* Right: Content */}
-                    <div className="flex flex-col justify-center">
-                        <span className="text-zinc-400 dark:text-zinc-500 text-xs font-bold uppercase tracking-[0.2em] mb-6">Latest Post</span>
-                        <Link href={`/blog/${heroPost.slug}`} className="group inline-block">
-                            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-semibold text-zinc-900 dark:text-zinc-100 mb-8 leading-[1.1] tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                {heroPost.title}
-                            </h2>
-                        </Link>
-
-                        <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 text-sm font-medium mb-10">
-                            <span>{heroPost.date}</span>
-                            <span>/</span>
-                            <span>{heroPost.author}</span>
+                    {/* Slider Navigation Dots */}
+                    {heroPostsCount > 1 && (
+                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+                            {heroPosts.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setCurrentHeroIndex(idx)}
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentHeroIndex === idx
+                                        ? 'bg-zinc-900 dark:bg-zinc-100 scale-110 w-8'
+                                        : 'bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600'
+                                        }`}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                />
+                            ))}
                         </div>
-
-                        <div>
-                            <Link href={`/blog/${heroPost.slug}`} className="inline-flex items-center gap-2 px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg">
-                                Read more <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-                            </Link>
-                        </div>
-                    </div>
+                    )}
                 </div>
             )}
 
