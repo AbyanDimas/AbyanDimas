@@ -1,8 +1,24 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import * as cheerio from "cheerio";
+
+async function processMarkdown(content: string) {
+    const processedContent = await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype, { allowDangerousHtml: true })
+        .use(rehypeHighlight)
+        .use(rehypeStringify, { allowDangerousHtml: true })
+        .process(content);
+    return processedContent.toString();
+}
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -35,9 +51,8 @@ export async function getProfileData(): Promise<ProfileData> {
     // Use gray-matter to parse the post metadata section
     const { data, content } = matter(fileContents);
 
-    // Use remark to convert markdown into HTML string
-    const processedContent = await remark().use(html).process(content);
-    const contentHtml = processedContent.toString();
+    // Use the unified pipeline
+    const contentHtml = await processMarkdown(content);
 
     return {
         ...data,
@@ -81,7 +96,9 @@ export interface BlogPostData {
     date: string;
     author: string;
     coverImage?: string;
+    tags?: string[];
     contentHtml: string;
+    toc?: { id: string; title: string; level: number }[];
 }
 
 export async function getProjects(): Promise<ProjectData[]> {
@@ -92,8 +109,7 @@ export async function getProjects(): Promise<ProjectData[]> {
         const fullPath = path.join(projectsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
-        const processedContent = await remark().use(html).process(content);
-        const contentHtml = processedContent.toString();
+        const contentHtml = await processMarkdown(content);
 
         return {
             slug,
@@ -112,8 +128,7 @@ export async function getBlogPosts(): Promise<BlogPostData[]> {
         const fullPath = path.join(blogDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
-        const processedContent = await remark().use(html).process(content);
-        const contentHtml = processedContent.toString();
+        const contentHtml = await processMarkdown(content);
 
         return {
             slug,
@@ -127,12 +142,53 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
     const fullPath = path.join(blogDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const processedContent = await remark().use(html).process(content);
-    const contentHtml = processedContent.toString();
+
+    // Use unified pipeline for full markdown table and syntax highlighting
+    const contentHtmlRaw = await processMarkdown(content);
+
+    const $ = cheerio.load(contentHtmlRaw, null, false); // false = do not wrap in <html><body>
+
+    // Remove duplicate cover image if it exists in the post body
+    if (data.coverImage) {
+        $(`img[src="${data.coverImage}"]`).each(function () {
+            const parent = $(this).parent();
+            if (parent.is('p') && parent.contents().length === 1) {
+                parent.remove(); // Remove the paragraph if it only contains the image
+            } else {
+                $(this).remove();
+            }
+        });
+    }
+
+    // Generate TOC and inject IDs into headings
+    const toc: { id: string; title: string; level: number }[] = [];
+    $('h2, h3, h4').each(function () {
+        const el = $(this);
+        const title = el.text();
+        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+        let finalId = id;
+        let counter = 1;
+        while (toc.some(t => t.id === finalId)) {
+            finalId = `${id}-${counter}`;
+            counter++;
+        }
+
+        el.attr('id', finalId);
+
+        toc.push({
+            id: finalId,
+            title,
+            level: parseInt((el.prop('tagName') || 'H2').replace('H', ''), 10)
+        });
+    });
+
+    const contentHtml = $.html();
 
     return {
         slug,
         contentHtml,
+        toc,
         ...(data as any),
     } as BlogPostData;
 }
@@ -157,8 +213,7 @@ export async function getCommandNotes(): Promise<CommandNoteData[]> {
         const fullPath = path.join(commandsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
-        const processedContent = await remark().use(html).process(content);
-        const contentHtml = processedContent.toString();
+        const contentHtml = await processMarkdown(content);
 
         return {
             slug,
@@ -175,8 +230,7 @@ export async function getCommandNote(slug: string): Promise<CommandNoteData> {
     const fullPath = path.join(commandsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const processedContent = await remark().use(html).process(content);
-    const contentHtml = processedContent.toString();
+    const contentHtml = await processMarkdown(content);
 
     return {
         slug,

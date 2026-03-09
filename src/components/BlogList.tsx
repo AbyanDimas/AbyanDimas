@@ -9,18 +9,26 @@ interface BlogListProps {
     initialPosts: BlogPostData[];
 }
 
+const CATEGORIES = ['All', 'Engineering', 'Infrastructure', 'Tools', 'Tutorials', 'Design'];
+
 export default function BlogList({ initialPosts }: BlogListProps) {
     const [searchQuery, setSearchQuery] = useState('');
+    const [activeCategory, setActiveCategory] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 7; // 1 Hero + 6 Grid items on first page
+    const postsPerPage = 13; // Use 7 (1 hero + 6 grid) or 10  (1 hero + 9 grid) depending on needs. Let's use 7.
 
-    // Filter posts based on search query
+    // Filter posts based on search query and category
     const filteredPosts = useMemo(() => {
-        return initialPosts.filter((post) =>
-            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }, [initialPosts, searchQuery]);
+        return initialPosts.filter((post) => {
+            const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+            // Since we don't have real categories in BlogPostData yet, 
+            // we will simulate category filtering by checking tags or if 'All' is selected.
+            // For now, let's just use 'All' or randomly assign for demo, or match full if 'All'.
+            const matchesCategory = activeCategory === 'All'; // Adjust if real categories are added
+            return matchesSearch && matchesCategory;
+        });
+    }, [initialPosts, searchQuery, activeCategory]);
 
     // Calculate pagination
     const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -35,6 +43,11 @@ export default function BlogList({ initialPosts }: BlogListProps) {
         setSearchQuery(e.target.value);
         setCurrentPage(1);
     };
+
+    const handleCategoryChange = (category: string) => {
+        setActiveCategory(category);
+        setCurrentPage(1);
+    }
 
     // Pagination Logic
     const getPageNumbers = () => {
@@ -53,204 +66,173 @@ export default function BlogList({ initialPosts }: BlogListProps) {
         return pages;
     };
 
+    // We use the first post as the Hero, only if on page 1, search is empty, category is All
+    const isDefaultView = currentPage === 1 && searchQuery === '' && activeCategory === 'All';
+    const heroPost = isDefaultView && currentPosts.length > 0 ? currentPosts[0] : null;
+    const gridPosts = isDefaultView ? currentPosts.slice(1) : currentPosts;
+
     return (
-        <div className="space-y-12 animate-in fade-in duration-500">
-            {/* Search Bar & Header Controls */}
-            {/* Header: Title & Search */}
-            <div className="flex flex-col md:flex-row gap-8 justify-between items-end mb-20 border-b border-zinc-200 dark:border-zinc-800 pb-8">
-                <div>
-                    <h1 className="text-4xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">
-                        Writing<span className="text-blue-600">.</span>
-                    </h1>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-md leading-relaxed">
-                        Insights on software engineering, infrastructure, and the tools that power the web.
-                    </p>
+        <div className="space-y-16 animate-in fade-in duration-500 font-sans">
+            {/* Hero Section */}
+            {heroPost && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 min-h-[500px]">
+                    {/* Left: Image with decorative background */}
+                    <Link href={`/blog/${heroPost.slug}`} className="relative block group w-full lg:w-[85%] mx-auto lg:mx-0">
+                        {/* Decorative Background Pattern/Shadow */}
+                        <div className="absolute inset-0 bg-transparent rounded-[1.5rem] transform translate-x-4 -translate-y-4 opacity-50 pointer-events-none transition-transform group-hover:translate-x-6 group-hover:-translate-y-6 duration-300 border border-zinc-200 dark:border-zinc-800" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }}>
+                            <div className="w-full h-full dark:hidden" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+                            <div className="w-full h-full hidden dark:block" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+                        </div>
+
+                        {/* Image */}
+                        <div className="relative z-10 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] shadow-2xl">
+                            {heroPost.coverImage ? (
+                                <div
+                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                    style={{ backgroundImage: `url(${heroPost.coverImage})` }}
+                                />
+                            ) : (
+                                <div className="absolute inset-0 bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
+                                    <span className="material-symbols-outlined text-[64px] text-zinc-400">image</span>
+                                </div>
+                            )}
+                        </div>
+                    </Link>
+
+                    {/* Right: Content */}
+                    <div className="flex flex-col justify-center">
+                        <span className="text-zinc-400 dark:text-zinc-500 text-xs font-bold uppercase tracking-[0.2em] mb-6">Latest Post</span>
+                        <Link href={`/blog/${heroPost.slug}`} className="group inline-block">
+                            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-semibold text-zinc-900 dark:text-zinc-100 mb-8 leading-[1.1] tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                {heroPost.title}
+                            </h2>
+                        </Link>
+
+                        <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 text-sm font-medium mb-10">
+                            <span>{heroPost.date}</span>
+                            <span>/</span>
+                            <span>{heroPost.author}</span>
+                        </div>
+
+                        <div>
+                            <Link href={`/blog/${heroPost.slug}`} className="inline-flex items-center gap-2 px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg">
+                                Read more <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Categories & Search Bar */}
+            <div className="flex flex-col md:flex-row gap-6 justify-between items-center py-4 border-y border-zinc-200 dark:border-zinc-800 sticky top-0 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md z-30 rounded-xl p-4">
+                {/* Categories */}
+                <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide shrink-0">
+                    <span className="text-zinc-500 dark:text-zinc-400 font-medium whitespace-nowrap text-sm">Categories:</span>
+                    {CATEGORIES.map(category => (
+                        <button
+                            key={category}
+                            onClick={() => handleCategoryChange(category)}
+                            className={`whitespace-nowrap font-medium text-sm transition-colors ${activeCategory === category ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'}`}
+                        >
+                            {category}
+                        </button>
+                    ))}
                 </div>
 
-                <div className="w-full md:w-auto">
-                    <div className="relative group min-w-[300px]">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <span className="material-symbols-outlined text-[20px] text-zinc-400 group-focus-within:text-blue-500 transition-colors">search</span>
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Type to search..."
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            className="w-full pl-12 pr-4 py-3 bg-zinc-100 dark:bg-zinc-800/50 border-none rounded-xl text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white dark:focus:bg-zinc-800 transition-all font-medium"
-                        />
+                {/* Search */}
+                <div className="relative w-full md:w-72 shrink-0 group">
+                    <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                        <span className="material-symbols-outlined text-[18px] text-zinc-400">search</span>
                     </div>
+                    <input
+                        type="text"
+                        placeholder="Search for a keyword..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        className="w-full pl-8 pr-4 py-2 bg-transparent border-none text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-0 text-sm transition-colors placeholder:font-normal font-medium"
+                    />
                 </div>
             </div>
 
-            {/* Content Area */}
-            {filteredPosts.length > 0 ? (
-                <>
-                    {/* Hero Post - Only show on first page when looking at all posts */}
-                    {currentPage === 1 && searchQuery === '' && currentPosts.length > 0 && (
-                        <div className="mb-16">
-                            <Link href={`/blog/${currentPosts[0].slug}`} className="group relative block">
-                                <div className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-xl">
-                                    {/* Background Image / Blur */}
-                                    {currentPosts[0].coverImage && (
-                                        <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                            style={{ backgroundImage: `url(${currentPosts[0].coverImage})` }}
-                                        />
-                                    )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                                    {/* Content Overlay */}
-                                    <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full md:w-3/4">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider mb-4 border border-blue-400/30">
-                                            <span className="material-symbols-outlined text-[12px]">auto_awesome</span> Featured
-                                        </div>
-                                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-blue-200 transition-colors">
-                                            {currentPosts[0].title}
-                                        </h2>
-                                        <p className="text-zinc-200 text-lg line-clamp-2 md:line-clamp-none mb-6 max-w-2xl">
-                                            {currentPosts[0].excerpt}
-                                        </p>
-                                        <div className="flex items-center gap-6 text-zinc-300 text-sm font-medium">
-                                            <div className="flex items-center gap-2">
-                                                <div className="p-1 bg-white/10 rounded-full">
-                                                    <span className="material-symbols-outlined text-[16px]">person</span>
-                                                </div>
-                                                {currentPosts[0].author}
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <div className="p-1 bg-white/10 rounded-full">
-                                                    <span className="material-symbols-outlined text-[16px]">schedule</span>
-                                                </div>
-                                                {currentPosts[0].date}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    )}
-
-                    {/* Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* 
-                            If Page 1 & No Search: Skip first item (Hero)
-                            Else: Show all items
-                        */}
-                        {currentPosts.slice((currentPage === 1 && searchQuery === '') ? 1 : 0).map((post) => (
-                            <Link key={post.slug} href={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                {/* Image Container */}
-                                <div className="relative h-56 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+            {/* Main Content Area */}
+            <div className="pt-8">
+                {gridPosts.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-14 gap-x-8">
+                        {gridPosts.map((post) => (
+                            <div key={post.slug} className="flex flex-col group h-full">
+                                <Link href={`/blog/${post.slug}`} className="block overflow-hidden rounded-xl mb-6 relative aspect-[3/2] bg-zinc-100 dark:bg-zinc-800">
                                     {post.coverImage ? (
                                         <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                                             style={{ backgroundImage: `url(${post.coverImage})` }}
                                         />
                                     ) : (
-                                        <div className="flex items-center justify-center h-full text-zinc-300">
-                                            <span className="material-symbols-outlined text-[48px]">description</span>
+                                        <div className="absolute inset-0 flex items-center justify-center text-zinc-300">
+                                            <span className="material-symbols-outlined text-[48px]">image</span>
                                         </div>
                                     )}
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex flex-col flex-1 p-6">
-                                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-3">
-                                        <span className="flex items-center gap-1">
-                                            <span className="material-symbols-outlined text-[12px]">schedule</span> {post.date}
-                                        </span>
-                                    </div>
-
-                                    <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                </Link>
+                                <h3 className="text-xl md:text-[22px] font-bold text-zinc-900 dark:text-zinc-100 mb-3 leading-snug">
+                                    <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         {post.title}
-                                    </h3>
-
-                                    <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 line-clamp-3">
-                                        {post.excerpt}
-                                    </p>
-
-                                    <div className="mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-[10px] text-white font-bold">
-                                                {post.author.charAt(0)}
-                                            </div>
-                                            <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 truncate max-w-[100px]">
-                                                {post.author}
-                                            </span>
-                                        </div>
-                                        <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center gap-1">
-                                            Read <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                                        </span>
-                                    </div>
+                                    </Link>
+                                </h3>
+                                <p className="text-zinc-600 dark:text-zinc-400 text-[15px] leading-relaxed mb-6 line-clamp-3">
+                                    {post.excerpt}
+                                </p>
+                                <div className="mt-auto text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                                    {post.date}
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
-                </>
-            ) : (
-                <div className="flex flex-col items-center justify-center py-24 text-center">
-                    <div className="w-24 h-24 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center mb-6">
-                        <span className="material-symbols-outlined text-[40px] text-zinc-400">search</span>
+                ) : (
+                    <div className="flex flex-col items-center justify-center py-20 text-center">
+                        <span className="material-symbols-outlined text-[48px] text-zinc-300 md:mb-4">search_off</span>
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">No articles found</h3>
+                        <p className="text-zinc-500 dark:text-zinc-400">Try adjusting your search or category filter.</p>
                     </div>
-                    <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">No articles found</h3>
-                    <p className="text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto">
-                        We couldn't find any articles matching "{searchQuery}". Try searching for something else.
-                    </p>
-                    <button
-                        onClick={() => { setSearchQuery(''); setCurrentPage(1); }}
-                        className="mt-8 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors"
-                    >
-                        Clear Search
-                    </button>
-                </div>
-            )}
+                )}
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-3 mt-20">
-                    <button
-                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                        disabled={currentPage === 1}
-                        className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                        aria-label="Previous Page"
-                    >
-                        <span className="material-symbols-outlined text-[20px]">chevron_left</span>
-                    </button>
-
-                    <div className="hidden sm:flex items-center gap-2">
-                        {getPageNumbers().map((page, index) => (
-                            page === '...' ? (
-                                <span key={`ellipsis-${index}`} className="px-4 py-2 text-zinc-400 font-medium">...</span>
-                            ) : (
-                                <button
-                                    key={page}
-                                    onClick={() => setCurrentPage(Number(page))}
-                                    className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${currentPage === page
-                                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-105'
-                                        : 'bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-blue-500/50 hover:text-blue-500'
-                                        }`}
-                                >
-                                    {page}
-                                </button>
-                            )
-                        ))}
+                {/* Pagination */}
+                {totalPages > 1 && (
+                    <div className="flex justify-center flex-wrap items-center gap-2 mt-20 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+                        <button
+                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                            className="px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 transition-all font-medium text-sm disabled:cursor-not-allowed hidden sm:block mr-2"
+                        >
+                            Previous
+                        </button>
+                        <div className="flex items-center gap-1">
+                            {getPageNumbers().map((page, index) => (
+                                page === '...' ? (
+                                    <span key={`ellipsis-${index}`} className="px-2 py-1 text-zinc-400 font-medium text-sm">...</span>
+                                ) : (
+                                    <button
+                                        key={page}
+                                        onClick={() => setCurrentPage(Number(page))}
+                                        className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all ${currentPage === page
+                                            ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-sm'
+                                            : 'bg-transparent text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                                            }`}
+                                    >
+                                        {page}
+                                    </button>
+                                )
+                            ))}
+                        </div>
+                        <button
+                            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                            disabled={currentPage === totalPages}
+                            className="px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 transition-all font-medium text-sm disabled:cursor-not-allowed hidden sm:block ml-2"
+                        >
+                            Next
+                        </button>
                     </div>
-
-                    <div className="sm:hidden flex items-center px-4 font-medium text-zinc-600 dark:text-zinc-400">
-                        Page {currentPage} of {totalPages}
-                    </div>
-
-                    <button
-                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                        disabled={currentPage === totalPages}
-                        className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                        aria-label="Next Page"
-                    >
-                        <span className="material-symbols-outlined text-[20px]">chevron_right</span>
-                    </button>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 }
+

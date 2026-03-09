@@ -21,6 +21,7 @@
     "cheerio": "^1.1.2",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "jsbarcode": "^3.12.3",
     "jsqr": "^1.4.0",
     "lucide-react": "^0.562.0",
@@ -32,12 +33,17 @@
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.0",
     "recharts": "^3.6.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "tailwind-merge": "^3.4.0",
     "tesseract.js": "^7.0.0",
-    "tldraw": "^4.2.3"
+    "tldraw": "^4.2.3",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
