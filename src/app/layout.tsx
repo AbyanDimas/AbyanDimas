@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: ['/banner.png'],
   },
   icons: {
-    icon: '/avatar.png',
+    icon: '/cloud-favicon.svg',
   },
 };
 
