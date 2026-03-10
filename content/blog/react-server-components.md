@@ -1,7 +1,7 @@
 ---
 title: "Understanding React Server Components"
 excerpt: "A deep dive into the architecture and benefits of React Server Components in Next.js."
-date: "Dec 15, 2025"
+date: "2025-12-15"
 author: "Abyan Dimas"
 ---
 React Server Components (RSC) represent a major shift in how we build React applications. By allowing components to render exclusively on the server, we can reduce bundle sizes and improve initial page load performance.

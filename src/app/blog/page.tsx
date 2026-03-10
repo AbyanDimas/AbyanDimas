@@ -7,17 +7,12 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-    const posts = await getBlogPosts();
-
-    // Sort by date descending so latest posts appear first (hero slider + grid)
-    const sortedPosts = [...posts].sort((a, b) =>
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    const posts = await getBlogPosts(); // Already sorted by date desc in getBlogPosts()
 
     return (
         <div className="min-h-screen py-12 px-6">
             <div className="max-w-7xl mx-auto">
-                <BlogList initialPosts={sortedPosts} />
+                <BlogList initialPosts={posts} />
             </div>
         </div>
     );

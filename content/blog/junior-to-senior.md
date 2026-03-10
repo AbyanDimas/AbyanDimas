@@ -10,7 +10,7 @@ coverImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w
 
 I often get asked, "What do I need to learn to be a Senior Dev?" The answer usually isn't a new framework.
 
-## 1. Problem Solving vs. Coding
+## 1. Problem Solving vs. Coding 
 
 Juniors are given a solution and asked to code it.
 Seniors are given a problem and asked to find the solution.

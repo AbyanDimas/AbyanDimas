@@ -136,7 +136,14 @@ export async function getBlogPosts(): Promise<BlogPostData[]> {
             ...(data as any),
         } as BlogPostData;
     }));
-    return allPostsData;
+
+    // Sort by date descending — latest posts first
+    // Handles both ISO format ("2026-03-10") and human-readable ("Dec 15, 2025")
+    return allPostsData.sort((a, b) => {
+        const dateA = Date.parse(a.date ?? "") || 0;
+        const dateB = Date.parse(b.date ?? "") || 0;
+        return dateB - dateA;
+    });
 }
 export async function getPostData(slug: string): Promise<BlogPostData> {
     const fullPath = path.join(blogDirectory, `${slug}.md`);
