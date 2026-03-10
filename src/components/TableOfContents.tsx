@@ -11,6 +11,26 @@ interface TocItem {
 export default function TableOfContents({ toc }: { toc: TocItem[] }) {
     const [activeId, setActiveId] = useState<string>('');
 
+    // Handle initial load scroll based on URL hash
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.location.hash) {
+            const id = window.location.hash.substring(1);
+            // Wait slightly for DOM to render completely
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const offset = 100;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }, 500);
+        }
+    }, [toc]);
+
     useEffect(() => {
         if (!toc || toc.length === 0) return;
 
@@ -57,12 +77,19 @@ export default function TableOfContents({ toc }: { toc: TocItem[] }) {
                     <a
                         key={heading.id}
                         href={`#${heading.id}`}
-                        className={`block transition-all duration-300 ${heading.level === 2
-                                ? `font-bold ${isActive ? 'text-zinc-900 dark:text-white translate-x-1' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`
-                                : `ml-3 text-[13px] ${isActive ? 'text-zinc-900 dark:text-white font-semibold translate-x-1' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`
+                        className={`block transition-all duration-300 relative group
+                            ${heading.level === 1
+                                ? `font-extrabold text-[15px] uppercase tracking-wide mt-4 ${isActive ? 'text-zinc-900 dark:text-white translate-x-1' : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white'}`
+                                : heading.level === 2
+                                    ? `font-bold ${isActive ? 'text-zinc-900 dark:text-white translate-x-1' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`
+                                    : `ml-3 text-[13px] ${isActive ? 'text-zinc-900 dark:text-white font-semibold translate-x-1' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`
                             }`}
                         onClick={(e) => {
                             e.preventDefault();
+
+                            // Update history with pushState so the hash shows up in URL
+                            window.history.pushState(null, "", `#${heading.id}`);
+
                             const element = document.getElementById(heading.id);
                             if (element) {
                                 const offset = 100;

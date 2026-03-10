@@ -99,6 +99,7 @@ export interface BlogPostData {
     tags?: string[];
     contentHtml: string;
     toc?: { id: string; title: string; level: number }[];
+    readTime?: number;
 }
 
 export async function getProjects(): Promise<ProjectData[]> {
@@ -130,9 +131,14 @@ export async function getBlogPosts(): Promise<BlogPostData[]> {
         const { data, content } = matter(fileContents);
         const contentHtml = await processMarkdown(content);
 
+        // Calculate read time (rough estimate: 200 words per minute)
+        const wordCount = content.split(/\s+/).length;
+        const readTime = Math.ceil(wordCount / 200);
+
         return {
             slug,
             contentHtml,
+            readTime,
             ...(data as any),
         } as BlogPostData;
     }));
@@ -149,6 +155,10 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
     const fullPath = path.join(blogDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
+
+    // Calculate read time (rough estimate: 200 words per minute)
+    const wordCount = content.split(/\s+/).length;
+    const readTime = Math.ceil(wordCount / 200);
 
     // Use unified pipeline for full markdown table and syntax highlighting
     const contentHtmlRaw = await processMarkdown(content);
@@ -169,7 +179,7 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
 
     // Generate TOC and inject IDs into headings
     const toc: { id: string; title: string; level: number }[] = [];
-    $('h2, h3, h4').each(function () {
+    $('h1, h2, h3, h4').each(function () {
         const el = $(this);
         const title = el.text();
         const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -202,6 +212,7 @@ export async function getPostData(slug: string): Promise<BlogPostData> {
         slug,
         contentHtml,
         toc,
+        readTime,
         ...(data as any),
     } as BlogPostData;
 }

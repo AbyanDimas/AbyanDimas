@@ -149,7 +149,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             <span>{post.date}</span>
                             <div className="flex items-center gap-1.5">
                                 <span className="material-symbols-outlined text-[16px]">schedule</span>
-                                <span>5 mins read</span>
+                                <span>{post.readTime || 5} min read</span>
                             </div>
                         </div>
                     </div>
